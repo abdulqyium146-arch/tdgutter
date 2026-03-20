@@ -8,17 +8,17 @@ import GoldDivider from '@/components/GoldDivider';
 import { services } from '@/lib/services';
 
 export const metadata: Metadata = {
-  title: 'Top Down Gutter & Windows | Northern California Exterior Cleaning Experts',
+  title: 'Gutter Cleaning & Exterior Washing | Top Down Gutter & Windows — Chico, CA',
   description:
-    'Professional gutter cleaning, roof washing, window cleaning, solar panel cleaning & more. Serving Redding, Chico, Oroville, Yuba City and Northern California. Licensed & insured. Free inspections.',
+    'Top Down Gutter & Windows serves Chico, Redding, Oroville, Yuba City and Northern California. Gutter cleaning, roof soft-washing, window cleaning, solar panel cleaning — licensed, insured, free inspections.',
   alternates: {
     canonical: 'https://tdgutterandwindows.com',
   },
   openGraph: {
     url: 'https://tdgutterandwindows.com',
-    title: 'Top Down Gutter & Windows | Northern California Exterior Cleaning Experts',
+    title: 'Gutter Cleaning & Exterior Washing | Top Down Gutter & Windows — Chico, CA',
     description:
-      'Professional gutter cleaning, roof washing, window cleaning & more — serving Redding to Yuba City. Licensed & insured. Free inspections.',
+      'Gutter cleaning, soft-wash roof cleaning, window washing & solar panel cleaning in Chico, Redding, Oroville, and Yuba City. Licensed & insured. Free inspections.',
   },
 };
 
@@ -122,7 +122,7 @@ export default function HomePage() {
 
         <div className="relative z-10 max-w-4xl mx-auto">
           <SectionLabel className="mb-4">
-            {"Northern California's Trusted Experts"}
+            Chico, CA &mdash; Serving Northern California
           </SectionLabel>
 
           <h1
@@ -132,12 +132,12 @@ export default function HomePage() {
           >
             From Roof to Windows,{' '}
             <span className="text-gold">Let Us Clean</span>{' '}
-            Your Home From The Top Down!
+            Your Home From The Top Down
           </h1>
 
           <p className="font-body text-slate text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-            Professional gutter cleaning, roof washing, window cleaning &amp; more —
-            serving Redding to Yuba City.
+            Gutter cleaning, soft-wash roof washing, window cleaning, solar panel cleaning &amp; more.
+            Serving Redding, Chico, Oroville, Yuba City, and the Sacramento Valley — licensed, insured, and free inspections on every job.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -189,8 +189,8 @@ export default function HomePage() {
             </svg>
           </div>
           <p className="font-display italic text-amber-200 text-sm leading-relaxed">
-            Thank you to all our customers for your patience while we were away fighting the LA fires.
-            We&apos;re back home and ready to serve you!
+            A sincere thank you to every customer who waited patiently while our team was on the ground helping with the 2025 LA fires relief effort.
+            We&apos;re back home in Northern California and fully operational — ready to take care of you and your home.
           </p>
         </div>
       </div>
@@ -204,7 +204,7 @@ export default function HomePage() {
               id="services-heading"
               className="font-display font-bold text-white text-4xl mb-4"
             >
-              Expert Home Exterior Services
+              Exterior Cleaning Services in Northern California
             </h2>
             <GoldDivider className="mx-auto" />
           </div>
@@ -278,10 +278,11 @@ export default function HomePage() {
             </h3>
             <GoldDivider className="mb-4 mx-auto md:mx-0" />
             <p className="font-body text-slate leading-relaxed mb-6 max-w-xl">
-              At Top Down Gutter &amp; Windows, we believe in giving back to those who protect and serve our
-              communities. We proudly offer exclusive discounts to all U.S. military veterans,
-              active-duty service members, and first responders — including police officers,
-              firefighters, and EMTs. Thank you for your service.
+              Top Down Gutter &amp; Windows is a proud supporter of veterans and first responders.
+              We offer meaningful discounts to all U.S. military veterans, active-duty service members,
+              and first responders — including law enforcement, firefighters, and EMTs.
+              Just mention your service when you call or request a quote. No paperwork, no hoops.
+              Thank you for everything you do.
             </p>
             <Link
               href="/contact"

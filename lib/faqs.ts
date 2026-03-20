@@ -5,53 +5,53 @@ export interface FAQ {
 
 export const faqs: FAQ[] = [
   {
-    question: "How often should I clean my gutters?",
+    question: "How often should I clean my gutters in Northern California?",
     answer:
-      "We recommend cleaning your gutters at least twice a year — once in the spring and once in the fall. If you have large trees near your home, especially pine trees, quarterly cleaning may be necessary. Clogged gutters can lead to water damage, foundation issues, and mold growth, so regular maintenance is a smart investment.",
+      "Most Northern California homes need gutter cleaning twice a year — once in late spring after tree pollen settles, and again in late October or early November after leaves fall but before the rainy season begins. That timing matters: gutters clogged going into December can overflow during the first big storm, sending water straight against your foundation or behind your fascia boards. If you have oak trees, pine trees, or a roof with a lot of surface area, bump that up to three or four times a year. Pine needles are the worst offenders — they pack into downspouts like wet paper and don't wash out on their own. A good rule of thumb: if you can see debris from the ground, you're already overdue.",
   },
   {
-    question: "What is soft washing and is it safe for my roof?",
+    question: "What is soft washing and is it safe for my roof shingles?",
     answer:
-      "Soft washing uses low-pressure water combined with biodegradable cleaning solutions to safely remove algae, mold, moss, and dirt from your roof. Unlike pressure washing, soft washing does not damage shingles, seals, or flashing. It's the industry-recommended method for roof cleaning and is safe for all roof types including asphalt shingles, tile, and metal roofing.",
+      "Soft washing is a low-pressure cleaning method — typically 60 to 150 PSI, similar to a garden hose — that pairs gentle water flow with biodegradable cleaning solutions to break down and remove algae, mold, lichen, and mildew from your roof. It's completely safe for asphalt shingles, tile, and metal roofing. In fact, it's the only method that is. Major shingle manufacturers including GAF, Owens Corning, and CertainTeed explicitly state in their warranty terms that pressure washing will void your coverage. The high-pressure stream strips the protective granules embedded in asphalt shingles — those granules block UV radiation and are critical to your roof's lifespan. Soft washing removes the same growth without touching a single granule, and restores the original color to your shingles — bringing your roof back to its former glory. Results last three to five times longer than pressure washing because the cleaning agents kill the biological growth at the root rather than just blasting the surface.",
   },
   {
-    question: "Do you offer free estimates?",
+    question: "Do you offer free estimates for gutter and exterior cleaning?",
     answer:
-      "Yes! We offer free estimates on all services. Simply call us at (619) 885-3894 or fill out our online service request form. We'll schedule a convenient time to assess your property and provide you with a transparent, no-obligation quote.",
+      "Yes — every estimate we provide is completely free and comes with no pressure or obligation. You can call us at (619) 885-3894, or fill out the service request form on our website, and we'll schedule a time to assess your property in person. We look at the linear footage of your gutters, roof pitch and accessibility, tree coverage, and the condition of your system before quoting a price. We don't do ballpark estimates over the phone without seeing the job — that's how surprise charges happen, and we won't do that to you. The quote you get is the price you pay.",
   },
   {
-    question: "What areas do you serve?",
+    question: "What cities and areas do you serve in Northern California?",
     answer:
-      "We proudly serve Northern California including Redding, Red Bluff, Orland, Chico, Oroville, Paradise, Grass Valley, and Yuba City — and many areas in between. If you're unsure whether we service your area, give us a call and we'll let you know!",
+      "We serve communities throughout the Northern Sacramento Valley and surrounding foothills — including Redding, Red Bluff, Orland, Chico, Oroville, Paradise, Grass Valley, and Yuba City. We also cover many communities in between, including Durham, Corning, Willows, Gridley, Marysville, and parts of Shasta, Tehama, Glenn, Butte, Nevada, and Sutter counties. If you're not sure whether we come out to your area, just call us — we'd rather tell you directly than have you wonder. We're based in Chico and cover a significant radius.",
   },
   {
-    question: "How long does a gutter cleaning take?",
+    question: "How long does a professional gutter cleaning take?",
     answer:
-      "A typical residential gutter cleaning takes between 1 to 3 hours depending on the size of your home, the pitch of your roof, and the amount of debris present. Our double-wash process ensures your gutters are thoroughly cleaned and flushed, so you can count on them working properly when the rain comes.",
+      "A standard single-story home typically takes between 45 minutes and an hour and a half. A two-story home with larger linear footage or heavier debris usually runs two to three hours. The main variables are the size of your home, how accessible your roofline is, and how long it's been since the gutters were last cleaned. Heavy, compacted debris, leaf litter, and sediment from multiple seasons takes longer to work through than a routine annual cleaning. We use our double rain gutter washing process on every job — dry debris removal by hand first, then a full flush of every channel and downspout to clear sediment — so the job gets done right rather than just done quickly.",
   },
   {
-    question: "Can you repair gutters same-day?",
+    question: "Can you repair my gutters the same day as the cleaning?",
     answer:
-      "In many cases, yes! Minor repairs such as sealing leaks, re-securing loose gutters, or unclogging downspouts can often be completed during the same visit as a cleaning. More extensive repairs or gutter replacement may require a follow-up appointment to source the correct materials. We'll always be upfront about what can be done on the same visit.",
+      "For most minor repairs, yes. If we find a leaking seam, a loose spike or hanger, a sagging section, or a partially blocked downspout during your cleaning, we can usually address it on the same visit. We come prepared for the most common repair scenarios. For more involved work — like replacing a full run of gutter, installing a new downspout, or fixing significant fascia damage — we'll walk you through what we found, photograph it, and schedule a follow-up with the right materials. We'll always give you a clear picture of what needs doing and what it'll cost before we touch anything.",
   },
   {
-    question: "Are you licensed and insured?",
+    question: "Are you licensed and insured to work in California?",
     answer:
-      "Absolutely. Top Down Gutter & Windows is fully licensed and insured. We carry general liability insurance to protect your property, and all our technicians are trained professionals. You can have complete peace of mind when we're working on your home.",
+      "Yes. Top Down Gutter & Windows is fully licensed and carries general liability insurance on every job. That matters for two reasons: first, it protects your property in the unlikely event something goes wrong while we're on site. Second, it means you're working with a legitimate business that stands behind its work. We'd encourage anyone hiring an exterior cleaning contractor in California to verify insurance before letting anyone on their roof — unlicensed, uninsured operators are common in this industry, and if something goes wrong, you're left with no recourse.",
   },
   {
-    question: "Do you offer veteran discounts?",
+    question: "Do you offer discounts for veterans and first responders?",
     answer:
-      "Yes, and we're proud to do so. We offer special discounts for all U.S. military veterans and active-duty service members, as well as first responders including police, firefighters, and EMTs. Please mention your service when requesting a quote and we'll apply your discount accordingly.",
+      "We do, and it's something we take seriously. We offer meaningful discounts to U.S. military veterans, active-duty service members, and first responders — including law enforcement, firefighters, and emergency medical personnel. Just mention your service when you call or submit your service request, and we'll apply the discount to your quote. No paperwork, no verification process, no hoops to jump through. We trust you.",
   },
   {
-    question: "What is gutter guard installation?",
+    question: "What is gutter guard installation and do I actually need it?",
     answer:
-      "Gutter guards are covers or screens that fit over your existing gutters to prevent leaves, debris, and pests from entering while still allowing water to flow through. They significantly reduce how often your gutters need to be cleaned. We offer installation of high-quality gutter guards and can also repair or replace existing guards that have become damaged or ineffective.",
+      "Gutter guards are covers or micro-mesh screens that sit over your existing gutters to block leaves, pine needles, seeds, and debris while still allowing rainwater to flow through and drain normally. Whether you need them depends on your tree situation. If you're cleaning your gutters twice a year and they're never really that bad, guards might not be worth the cost. But if you're on a third or fourth cleaning in a single year — or if you've had water damage from overflowing gutters — guards can dramatically reduce maintenance frequency and protect your home long-term. We install high-quality systems and are honest about which setups are worth the investment for your specific property.",
   },
   {
-    question: "Do you clean solar panels?",
+    question: "How much energy can I recover by cleaning my solar panels?",
     answer:
-      "Yes! Dirty solar panels can lose 15–25% of their energy efficiency due to dust, bird droppings, and grime buildup. We offer professional solar panel cleaning using purified water and soft-brush techniques that won't scratch your panels or void warranties. Regular cleaning ensures you're getting maximum output from your solar investment.",
+      "Quite a bit, especially in the Sacramento Valley. Research from the University of California, San Diego found that solar panels in dusty, agricultural environments can lose seven percent of efficiency per month when uncleaned. Over a full year in an area like Chico, Oroville, or the Yuba City corridor — where irrigation dust, pollen, and wildfire smoke are seasonal realities — soiling-related output losses commonly reach 15 to 25 percent. On a 10-kilowatt system generating roughly 15,000 kWh annually, a 20% loss means you're buying back about 3,000 kWh from your utility each year that your panels should be producing. A single professional cleaning typically pays for itself within the first billing cycle after service.",
   },
 ];

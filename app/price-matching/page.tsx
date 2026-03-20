@@ -16,19 +16,19 @@ const steps = [
     num: '01',
     title: 'Get a Competitor Quote',
     description:
-      "Collect a written estimate from any licensed, insured competitor for the same service and scope of work at your property. Must be a current, valid quote.",
+      "Get a written estimate from any licensed, insured exterior cleaning company operating in Northern California. It needs to cover the same service type and scope at your specific property — apples to apples, not a generic ballpark.",
   },
   {
     num: '02',
     title: 'Share It With Us',
     description:
-      "Call us or email the quote to TopDown.GutterAndWindow@gmail.com. We'll review it and verify the scope matches what we'd provide.",
+      "Call (619) 885-3894 or email the quote to TopDown.GutterAndWindow@gmail.com. We'll review the scope and confirm it matches what we'd actually do at your property. This usually takes one conversation.",
   },
   {
     num: '03',
-    title: "We Match It — Guaranteed",
+    title: "We Match It — No Runaround",
     description:
-      "We'll match the competitor's price on the spot. No haggling, no runaround. Same quality work, same professional team, at the price you found.",
+      "We match the price. No negotiation theater, no surprise add-ons, no pressure to upsell you past the original scope. You get the same trained crew and the same professional process at the matched rate.",
   },
 ];
 
@@ -48,7 +48,9 @@ export default function PriceMatchingPage() {
           </h1>
           <GoldDivider className="mx-auto mb-6" />
           <p className="font-body text-slate text-lg max-w-xl mx-auto">
-            {"You deserve professional service at a fair price. If you find a lower quote from a licensed, insured competitor, we'll match it."}
+            Finding the right price for exterior cleaning in Northern California shouldn&apos;t require
+            three phone calls and two broken promises. If a licensed, insured competitor
+            quotes you less for the same job, we match it. No conditions, no negotiation.
           </p>
         </div>
       </div>
@@ -97,12 +99,12 @@ export default function PriceMatchingPage() {
           <GoldDivider className="mb-6" />
           <ul className="space-y-4">
             {[
-              'Applies to all services we offer — gutter cleaning, roof washing, window cleaning, solar panel cleaning, house washing, and more.',
-              'Competitor must be licensed, insured, and actively operating in Northern California.',
-              'Quote must be for the same scope, service type, and property.',
-              'Competitor quote must be current (within 30 days) and in writing.',
-              'Does not apply to promotional codes, seasonal flash sales, or quotes below our cost of materials.',
-              'We reserve the right to inspect the property before finalizing the matched price.',
+              'Covers all services we provide — gutter cleaning, roof soft-washing, window cleaning, solar panel cleaning, house washing, gutter guard installation, and more.',
+              'The competing company must hold a valid California contractor\'s license, carry general liability insurance, and be actively operating in Northern California.',
+              'The quote must be for the identical scope — same service, same linear footage or surface area, same property.',
+              'Competitor quote must be in writing and dated within the last 30 days. Screenshots of text or email estimates are accepted.',
+              'Does not apply to promotional or coupon pricing, first-time-customer flash sales, or quotes that fall below our verifiable cost of materials and labor.',
+              'We may request a brief property review before confirming the matched price on jobs involving unusual access conditions or structural concerns.',
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-3 font-body text-slate">
                 <span className="text-gold mt-1 flex-shrink-0">
@@ -119,11 +121,11 @@ export default function PriceMatchingPage() {
         {/* CTA */}
         <section className="text-center">
           <h2 className="font-display font-bold text-white text-3xl mb-4">
-            Ready to Get the Best Price?
+            Have a Competitor Quote? Let&apos;s Talk.
           </h2>
           <p className="font-body text-slate mb-8 max-w-lg mx-auto">
-            Call us today or submit a service request. Bring your competitor quote and
-            {"we'll match it — simple as that."}
+            Call us or submit a service request and bring your written quote. We&apos;ll confirm
+            scope and match the price — most of the time in one phone call.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

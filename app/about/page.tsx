@@ -14,7 +14,8 @@ export const metadata: Metadata = {
 const serviceAreas = [
   'Redding', 'Red Bluff', 'Orland', 'Chico',
   'Oroville', 'Paradise', 'Grass Valley', 'Yuba City',
-  'Chico', 'Durham', 'Corning', 'Willows',
+  'Durham', 'Corning', 'Willows', 'Gridley',
+  'Marysville', 'Colusa', 'Los Molinos',
 ];
 
 export default function AboutPage() {
@@ -50,19 +51,27 @@ export default function AboutPage() {
               <GoldDivider className="mb-6" />
               <div className="space-y-4 font-body text-slate leading-relaxed">
                 <p>
-                  Top Down Gutter &amp; Windows was founded on a simple belief: every homeowner deserves
-                  access to professional exterior cleaning at honest, transparent prices — without
-                  the runaround.
+                  Top Down Gutter &amp; Windows was built out of a straightforward frustration:
+                  finding a reliable exterior cleaning company in Northern California that
+                  didn&apos;t cut corners, pad quotes, or disappear after one season was harder
+                  than it should be. So we built one.
                 </p>
                 <p>
-                  We started as a small operation in Northern California and have grown steadily
-                  by doing one thing better than everyone else: showing up, doing the work right,
-                  and treating our customers like neighbors — because most of them are.
+                  We&apos;re based in Chico and cover a wide radius — from Redding and Red Bluff
+                  in the north down through the Sacramento Valley to Yuba City and Marysville.
+                  Every crew member we put on your roof or near your gutters is someone we
+                  trained ourselves and trust to represent us the way we&apos;d want to be treated.
                 </p>
                 <p>
-                  From the foothills of Paradise to the valley floor in Yuba City, we&apos;ve cleaned
-                  thousands of gutters, roofs, windows, and solar panels. Each job is handled
-                  with the same care and attention we&apos;d give our own home.
+                  Our double rain gutter washing process, ARMA-aligned soft-wash roof protocols, and
+                  deionized water solar cleaning aren&apos;t marketing language — they&apos;re how we
+                  actually work, on every job, every time. The results speak for themselves
+                  in referrals that have driven most of our growth from the beginning.
+                </p>
+                <p>
+                  In early 2025, part of our team left Northern California to help with relief
+                  efforts during the LA fires. We&apos;re grateful for every customer who was
+                  patient with us during that time. We&apos;re home now — and fully ready to serve.
                 </p>
               </div>
             </div>
@@ -96,18 +105,22 @@ export default function AboutPage() {
           <GoldDivider className="mb-6" />
           <div className="space-y-4 font-body text-slate leading-relaxed">
             <p>
-              Our mission is straightforward: deliver the highest quality exterior cleaning services
-              in Northern California at prices that are fair, competitive, and transparent.
+              The Sacramento Valley is a demanding environment for homes. Agricultural dust,
+              wildfire smoke, hard water mineral deposits, and concentrated winter rains
+              put real stress on gutters, rooflines, siding, and solar panels every year.
+              Our job is to stay ahead of that damage cycle — not just respond to it.
             </p>
             <p>
-              We don&apos;t believe in hidden fees, upselling services you don&apos;t need, or sending
-              inexperienced crews to your home. Every member of our team is trained, vetted, and
-              equipped with the right tools for the job.
+              We don&apos;t upsell services you don&apos;t need, and we don&apos;t send an untrained crew
+              to your property to figure it out on the job. We tell you what we found,
+              photograph anything worth documenting, and explain what needs to happen
+              and why — then we let you decide.
             </p>
             <p>
-              We back this with our <strong className="text-gold">Price Match Guarantee</strong> —
-              if you find a lower quote from a licensed, insured competitor for the same scope of
-              work, we&apos;ll match it. No questions asked.
+              We back that approach with our <strong className="text-gold">Price Match Guarantee</strong> —
+              if a licensed, insured competitor quotes you less for the same scope of work,
+              we&apos;ll match it. Not because we race to the bottom, but because we&apos;re confident
+              in the value we deliver at every price point.
             </p>
           </div>
         </section>
@@ -135,18 +148,21 @@ export default function AboutPage() {
               <GoldDivider className="mb-4" />
               <div className="space-y-4 font-body text-slate leading-relaxed">
                 <p>
-                  Service and sacrifice are values we hold close. That&apos;s why Top Down Gutter &amp; Windows
-                  proudly offers exclusive discounts to all U.S. military veterans, active-duty
-                  service members, and first responders — including police officers, firefighters,
-                  and EMTs.
+                  Top Down Gutter &amp; Windows offers meaningful discounts to U.S. military veterans,
+                  active-duty service members, and first responders — law enforcement, firefighters,
+                  and emergency medical personnel. Not a token percentage, but a real reduction
+                  on every service we provide.
                 </p>
                 <p>
-                  It&apos;s a small way of saying thank you to the men and women who protect our
-                  communities every day.
+                  Northern California has one of the highest concentrations of active and retired
+                  military in the state, and our first responder communities here — especially
+                  in Butte County after the Camp Fire — have shouldered more than most. This
+                  discount is a direct acknowledgment of that, not a marketing line.
                 </p>
                 <p>
-                  To claim your discount, simply mention your service status when requesting a quote
-                  or during your initial call. No paperwork needed — just our trust in yours.
+                  Mention your service when you call or submit a request online. That&apos;s it.
+                  No forms, no verification process, no fine print. We trust you, and we&apos;re
+                  glad you&apos;re here.
                 </p>
               </div>
               <Link
@@ -167,8 +183,10 @@ export default function AboutPage() {
           </h2>
           <GoldDivider className="mb-6" />
           <p className="font-body text-slate leading-relaxed mb-8">
-            We serve communities throughout Northern California, from the Shasta County foothills
-            down through the Sacramento Valley.
+            We cover a significant radius out of Chico — from Shasta and Tehama counties in the
+            north through Glenn, Butte, Colusa, and into Sutter and Yuba counties to the south.
+            If you&apos;re not sure whether we reach your area, call us directly. We&apos;d rather
+            tell you honestly than have you chase a quote that goes nowhere.
           </p>
           <div className="flex flex-wrap gap-x-2 gap-y-3">
             {serviceAreas.map((city, i) => (
