@@ -1,26 +1,130 @@
 @import "tailwindcss";
 
+@theme {
+  /* Navy palette */
+  --color-navy-950: #060E1C;
+  --color-navy-900: #0B1628;
+  --color-navy-800: #122040;
+  --color-navy-700: #1A3560;
+  --color-navy-600: #1E3A6E;
+
+  /* Gold palette */
+  --color-gold: #C9902A;
+  --color-gold-light: #E8B84B;
+  --color-gold-dark: #9B6D1A;
+
+  /* Slate */
+  --color-slate: #8CA3C0;
+  --color-slate-dark: #4A6080;
+
+  /* Cream */
+  --color-cream: #F5F0E8;
+
+  /* Font families */
+  --font-display: var(--font-display-var, 'Playfair Display', serif);
+  --font-body: var(--font-body-var, 'DM Sans', sans-serif);
+  --font-label: var(--font-label-var, 'Bebas Neue', cursive);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0B1628;
+  --foreground: #ffffff;
+  --font-display-var: 'Playfair Display', serif;
+  --font-body-var: 'DM Sans', sans-serif;
+  --font-label-var: 'Bebas Neue', cursive;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #0B1628;
+  color: #ffffff;
+  font-family: var(--font-body-var), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  display: flex;
+  white-space: nowrap;
+}
+
+/* Pulse glow for phone */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.75; text-shadow: 0 0 24px rgba(201, 144, 42, 0.7); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+/* Skip to content */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: #C9902A;
+  color: #0B1628;
+  padding: 8px 16px;
+  font-weight: 600;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus states */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #C9902A;
+  outline-offset: 2px;
+}
+
+/* Hero diagonal SVG pattern overlay */
+.hero-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='80' x2='80' y2='0' stroke='%23C9902A' stroke-width='0.8' stroke-opacity='0.06'/%3E%3Cline x1='-20' y1='80' x2='60' y2='0' stroke='%23C9902A' stroke-width='0.8' stroke-opacity='0.06'/%3E%3Cline x1='20' y1='80' x2='100' y2='0' stroke='%23C9902A' stroke-width='0.8' stroke-opacity='0.06'/%3E%3C/svg%3E");
+}
+
+/* Accordion transition */
+.accordion-content {
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+/* Gold checkbox */
+input[type="checkbox"] {
+  accent-color: #C9902A;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0B1628;
+}
+::-webkit-scrollbar-thumb {
+  background: #1A3560;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C9902A;
 }
