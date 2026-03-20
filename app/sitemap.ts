@@ -1,26 +1,91 @@
 import type { MetadataRoute } from 'next';
 import { blogPosts } from '@/lib/blog';
 
-const baseUrl = 'https://tdgutterandwindows.com';
+const BASE = 'https://tdgutterandwindows.com';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CRITICAL: Use real hardcoded dates — NOT new Date().
+// new Date() changes on every build → Google sees every page "modified" every
+// deploy → it learns your lastmod signal is noise and ignores it entirely.
+// Real dates = Google trusts lastmod → prioritises recrawl correctly.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Site launch / last substantive content update per page
+const SITE_LAUNCH   = '2025-03-20';
+const CONTENT_AUDIT = '2025-03-20'; // bump this when you rewrite copy
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages: MetadataRoute.Sitemap = [
-    { url: baseUrl, lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 },
-    { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${baseUrl}/faqs`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${baseUrl}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${baseUrl}/service-request`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${baseUrl}/price-matching`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${baseUrl}/more`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
+  return [
+
+    // ── TIER 1 — Homepage (highest authority, weekly recrawl signal) ──────
+    {
+      url: BASE,
+      lastModified: SITE_LAUNCH,
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+
+    // ── TIER 2 — Primary conversion pages ────────────────────────────────
+    // These pages drive bookings — signal Google they matter
+    {
+      url: `${BASE}/service-request`,
+      lastModified: SITE_LAUNCH,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE}/contact`,
+      lastModified: SITE_LAUNCH,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+
+    // ── TIER 3 — High-value informational / rich-result pages ────────────
+    // FAQs can earn FAQ rich results in SERP — treat as high priority
+    {
+      url: `${BASE}/faqs`,
+      lastModified: CONTENT_AUDIT,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    // Blog index — updated whenever new posts publish
+    {
+      url: `${BASE}/blog`,
+      lastModified: blogPosts[blogPosts.length - 1]?.isoDate ?? SITE_LAUNCH,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    // Price-matching can rank for "cheapest gutter cleaning [city]" queries
+    {
+      url: `${BASE}/price-matching`,
+      lastModified: SITE_LAUNCH,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+
+    // ── TIER 4 — Supporting pages ─────────────────────────────────────────
+    {
+      url: `${BASE}/about`,
+      lastModified: SITE_LAUNCH,
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+    // /more is a thin hub — low priority but keep indexed for internal linking
+    {
+      url: `${BASE}/more`,
+      lastModified: SITE_LAUNCH,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+
+    // ── BLOG POSTS — real publish dates, evergreen = changeFreq 'never' ──
+    // 'never' = "content is stable, don't waste crawl budget rechecking it"
+    // Google still recrawls these but at low priority, which is correct.
+    ...blogPosts.map((post) => ({
+      url: `${BASE}/blog/${post.slug}`,
+      lastModified: post.isoDate,          // real date, not new Date()
+      changeFrequency: 'never' as const,   // evergreen articles
+      priority: 0.7,
+    })),
   ];
-
-  const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
-
-  return [...staticPages, ...blogPages];
 }
