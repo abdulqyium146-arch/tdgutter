@@ -1,5 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { blogPosts } from '@/lib/blog';
+import { services } from '@/lib/services';
+import { locations } from '@/lib/locations';
 
 const BASE = 'https://tdgutterandwindows.com';
 
@@ -77,6 +79,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.3,
     },
+
+    // ── SERVICES HUB ─────────────────────────────────────────────────────
+    {
+      url: `${BASE}/services`,
+      lastModified: SITE_LAUNCH,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+
+    // ── LOCATIONS HUB ────────────────────────────────────────────────────
+    {
+      url: `${BASE}/locations`,
+      lastModified: SITE_LAUNCH,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+
+    // ── INDIVIDUAL SERVICE PAGES ─────────────────────────────────────────
+    ...services.map((service) => ({
+      url: `${BASE}/services/${service.id}`,
+      lastModified: '2025-03-20',
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
+
+    // ── INDIVIDUAL LOCATION PAGES ────────────────────────────────────────
+    ...locations.map((loc) => ({
+      url: `${BASE}/locations/${loc.slug}`,
+      lastModified: '2025-03-20',
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
 
     // ── BLOG POSTS — real publish dates, evergreen = changeFreq 'never' ──
     // 'never' = "content is stable, don't waste crawl budget rechecking it"

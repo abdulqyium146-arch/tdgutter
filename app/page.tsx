@@ -6,6 +6,7 @@ import TrustBar from '@/components/TrustBar';
 import SectionLabel from '@/components/SectionLabel';
 import GoldDivider from '@/components/GoldDivider';
 import { services } from '@/lib/services';
+import { locations } from '@/lib/locations';
 
 export const metadata: Metadata = {
   title: 'Gutter Cleaning & Exterior Washing | Top Down Gutter & Windows — Chico, CA',
@@ -296,6 +297,52 @@ export default function HomePage() {
 
       {/* ── TRUST BAR ── */}
       <TrustBar />
+
+      {/* ── AREAS WE SERVE ── */}
+      <section className="py-20 px-4 bg-navy-950" aria-labelledby="areas-serve-heading">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <SectionLabel className="mb-3">Where We Work</SectionLabel>
+            <h2
+              id="areas-serve-heading"
+              className="font-display font-bold text-white text-4xl mb-4"
+            >
+              Serving 8 Communities Across Northern California
+            </h2>
+            <GoldDivider className="mx-auto" />
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            {locations.map((loc) => (
+              <Link
+                key={loc.slug}
+                href={`/locations/${loc.slug}`}
+                className="group bg-navy-900 border border-navy-700 rounded-xl p-5 hover:border-gold/50 hover:bg-navy-800 transition-all duration-300"
+              >
+                <p className="font-body font-semibold text-white group-hover:text-gold transition-colors duration-200 text-base mb-1">
+                  {loc.city}
+                </p>
+                <p className="font-body text-slate text-xs mb-3">{loc.county}</p>
+                <p className="font-body text-slate-dark text-xs leading-relaxed">
+                  {loc.commonIssues[0].title}
+                </p>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link
+              href="/locations"
+              className="inline-flex items-center gap-2 border-2 border-gold text-gold font-body font-semibold px-7 py-3 rounded-full hover:bg-gold/10 transition-colors duration-200"
+            >
+              View All Service Areas
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Bottom bounce animation */}
       <style>{`

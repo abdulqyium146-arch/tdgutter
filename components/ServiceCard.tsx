@@ -83,7 +83,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           <p className="font-body text-slate text-sm leading-relaxed">{service.description}</p>
         </div>
         <Link
-          href="/service-request"
+          href={`/services/${service.id}`}
           className="inline-flex items-center gap-1 text-gold text-sm font-body font-medium hover:underline transition-all group-hover:gap-2 mt-auto"
         >
           Learn More

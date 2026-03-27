@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { services } from '@/lib/services';
+import { locations } from '@/lib/locations';
 
 const socialLinks = [
   {
@@ -30,21 +32,6 @@ const socialLinks = [
   },
 ];
 
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/faqs', label: 'FAQs' },
-  { href: '/about', label: 'About Us' },
-  { href: '/contact', label: 'Contact' },
-  { href: '/service-request', label: 'Service Request' },
-  { href: '/price-matching', label: 'Price-Matching' },
-  { href: '/more', label: 'More' },
-];
-
-const serviceAreas = [
-  'Redding', 'Red Bluff', 'Orland', 'Chico',
-  'Oroville', 'Paradise', 'Grass Valley', 'Yuba City',
-];
 
 export default function Footer() {
   return (
@@ -54,8 +41,8 @@ export default function Footer() {
       role="contentinfo"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
-          {/* Brand */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+          {/* Column 1 — Brand */}
           <div>
             <Link href="/" className="inline-flex flex-col leading-none mb-4">
               <span className="font-display font-bold text-white text-xl">TOP DOWN</span>
@@ -87,24 +74,41 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Navigation */}
+          {/* Column 2 — Services */}
           <div>
-            <h3 className="font-label text-gold text-sm tracking-[0.2em] uppercase mb-4">Navigation</h3>
+            <h3 className="font-label text-gold text-sm tracking-[0.2em] uppercase mb-4">Services</h3>
             <ul className="space-y-2">
-              {navLinks.map((link) => (
-                <li key={link.href}>
+              {services.map((service) => (
+                <li key={service.id}>
                   <Link
-                    href={link.href}
+                    href={`/services/${service.id}`}
                     className="font-body text-slate text-sm hover:text-gold transition-colors duration-200"
                   >
-                    {link.label}
+                    {service.title}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact + Service Area */}
+          {/* Column 3 — Locations */}
+          <div>
+            <h3 className="font-label text-gold text-sm tracking-[0.2em] uppercase mb-4">Locations</h3>
+            <ul className="space-y-2">
+              {locations.map((loc) => (
+                <li key={loc.slug}>
+                  <Link
+                    href={`/locations/${loc.slug}`}
+                    className="font-body text-slate text-sm hover:text-gold transition-colors duration-200"
+                  >
+                    {loc.city}, {loc.stateAbbr}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4 — Contact */}
           <div>
             <h3 className="font-label text-gold text-sm tracking-[0.2em] uppercase mb-4">Contact</h3>
             <ul className="space-y-3 mb-8">
@@ -142,7 +146,7 @@ export default function Footer() {
             </ul>
 
             {/* Guest Post WhatsApp */}
-            <div className="mb-8 p-3 bg-navy-800 rounded-lg border border-navy-700">
+            <div className="mb-6 p-3 bg-navy-800 rounded-lg border border-navy-700">
               <p className="font-label text-gold text-xs tracking-[0.15em] uppercase mb-2">Guest Post Inquiries</p>
               <a
                 href="https://wa.me/923474825228"
@@ -156,17 +160,6 @@ export default function Footer() {
                 </svg>
                 WhatsApp: +92 347 482 5228
               </a>
-            </div>
-
-            <h3 className="font-label text-gold text-sm tracking-[0.2em] uppercase mb-3">Service Area</h3>
-            <div className="flex flex-wrap gap-1.5">
-              {serviceAreas.map((city, i) => (
-                <span key={city} className="font-body text-slate text-xs">
-                  {city}{i < serviceAreas.length - 1 && (
-                    <span className="text-gold mx-1.5">•</span>
-                  )}
-                </span>
-              ))}
             </div>
           </div>
         </div>
