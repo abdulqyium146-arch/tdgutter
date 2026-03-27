@@ -75,7 +75,7 @@ export default function ServiceRequestForm() {
         </div>
         <div>
           <label htmlFor="sr-phone" className={labelClass}>Phone Number *</label>
-          <input id="sr-phone" type="tel" placeholder="(619) 885-3894" className={inputClass} {...register('phone')} />
+          <input id="sr-phone" type="tel" placeholder="(614) 350-5978" className={inputClass} {...register('phone')} />
           {errors.phone && <p className={errorClass}>{errors.phone.message}</p>}
         </div>
       </div>

@@ -6,7 +6,7 @@ import GoldDivider from '@/components/GoldDivider';
 export const metadata: Metadata = {
   title: 'Contact Us — Free Estimates | Top Down Gutter & Windows',
   description:
-    "Contact Top Down Gutter & Windows in Chico, CA. Request a free estimate for gutter cleaning, roof washing, window cleaning & more. We respond within 24 hours. Call (619) 885-3894.",
+    "Contact Top Down Gutter & Windows in Chico, CA. Request a free estimate for gutter cleaning, roof washing, window cleaning & more. We respond within 24 hours. Call (614) 350-5978.",
   alternates: { canonical: 'https://tdgutterandwindows.com/contact' },
   openGraph: { url: 'https://tdgutterandwindows.com/contact', title: 'Contact Top Down Gutter & Windows — Free Estimates' },
 };
@@ -46,10 +46,10 @@ export default function ContactPage() {
                 <div>
                   <p className="font-body font-semibold text-white text-sm mb-1">Phone</p>
                   <a
-                    href="tel:6198853894"
+                    href="tel:6143505978"
                     className="font-body text-gold text-xl font-semibold hover:underline"
                   >
-                    (619) 885-3894
+                    (614) 350-5978
                   </a>
                   <p className="font-body text-slate text-xs mt-1">Mon–Sat, 7am–7pm</p>
                 </div>

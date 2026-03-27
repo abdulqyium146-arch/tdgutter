@@ -22,7 +22,7 @@ const steps = [
     num: '02',
     title: 'Share It With Us',
     description:
-      "Call (619) 885-3894 or email the quote to TopDown.GutterAndWindow@gmail.com. We'll review the scope and confirm it matches what we'd actually do at your property. This usually takes one conversation.",
+      "Call (614) 350-5978 or email the quote to TopDown.GutterAndWindow@gmail.com. We'll review the scope and confirm it matches what we'd actually do at your property. This usually takes one conversation.",
   },
   {
     num: '03',
@@ -129,10 +129,10 @@ export default function PriceMatchingPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:6198853894"
+              href="tel:6143505978"
               className="bg-gold text-navy-900 font-body font-semibold px-8 py-4 rounded-full hover:bg-gold-light transition-colors duration-200 text-base"
             >
-              Call (619) 885-3894
+              Call (614) 350-5978
             </a>
             <Link
               href="/service-request"

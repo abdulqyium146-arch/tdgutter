@@ -184,7 +184,7 @@ export default function Image() {
               letterSpacing: '0.05em',
             }}
           >
-            ☎ (619) 885-3894
+            ☎ (614) 350-5978
           </div>
         </div>
       </div>

@@ -49,8 +49,8 @@ export default function ServiceRequestPage() {
         <div className="mt-8 text-center">
           <p className="font-body text-slate text-sm">
             Prefer to talk?{' '}
-            <a href="tel:6198853894" className="text-gold hover:underline font-semibold">
-              Call us at (619) 885-3894
+            <a href="tel:6143505978" className="text-gold hover:underline font-semibold">
+              Call us at (614) 350-5978
             </a>
           </p>
         </div>

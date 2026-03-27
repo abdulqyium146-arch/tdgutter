@@ -17,7 +17,7 @@ export const faqs: FAQ[] = [
   {
     question: "Do you offer free estimates for gutter and exterior cleaning?",
     answer:
-      "Yes — every estimate we provide is completely free and comes with no pressure or obligation. You can call us at (619) 885-3894, or fill out the service request form on our website, and we'll schedule a time to assess your property in person. We look at the linear footage of your gutters, roof pitch and accessibility, tree coverage, and the condition of your system before quoting a price. We don't do ballpark estimates over the phone without seeing the job — that's how surprise charges happen, and we won't do that to you. The quote you get is the price you pay.",
+      "Yes — every estimate we provide is completely free and comes with no pressure or obligation. You can call us at (614) 350-5978, or fill out the service request form on our website, and we'll schedule a time to assess your property in person. We look at the linear footage of your gutters, roof pitch and accessibility, tree coverage, and the condition of your system before quoting a price. We don't do ballpark estimates over the phone without seeing the job — that's how surprise charges happen, and we won't do that to you. The quote you get is the price you pay.",
   },
   {
     question: "What cities and areas do you serve in Northern California?",

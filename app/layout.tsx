@@ -122,7 +122,7 @@ const websiteSchema = {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+1-619-885-3894',
+      telephone: '+1-614-350-5978',
       contactType: 'customer service',
       areaServed: 'Northern California',
       availableLanguage: 'English',

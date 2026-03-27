@@ -273,10 +273,10 @@ export default async function BlogPostPage({ params }: Props) {
               Request a Service
             </Link>
             <a
-              href="tel:6198853894"
+              href="tel:6143505978"
               className="border-2 border-gold text-gold font-body font-semibold px-7 py-3 rounded-full hover:bg-gold/10 transition-colors duration-200"
             >
-              Call (619) 885-3894
+              Call (614) 350-5978
             </a>
           </div>
         </div>

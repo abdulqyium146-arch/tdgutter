@@ -59,7 +59,7 @@ While we're on the roof, we're also looking at the condition of your gutter moun
 
 Pre-season booking in October fills quickly. Once the first storm hits, we're fielding calls from homeowners who just discovered their gutters are overflowing and there's a water stain on their ceiling. We prioritize everyone we can, but there's a finite amount of ladder time available.
 
-If you're in Chico, Redding, Oroville, Yuba City, Paradise, or anywhere in the Northern Sacramento Valley, call us at **(619) 885-3894** or submit a service request online. Give yourself and your home the best possible shot at a dry, damage-free winter.
+If you're in Chico, Redding, Oroville, Yuba City, Paradise, or anywhere in the Northern Sacramento Valley, call us at **(614) 350-5978** or submit a service request online. Give yourself and your home the best possible shot at a dry, damage-free winter.
     `,
   },
   {
@@ -138,7 +138,7 @@ Before you hire any exterior cleaning company, ask this directly: *"What method 
 
 If the answer is pressure washing, or if they hesitate, that's your answer. Any professional who understands the trade knows that soft washing is the only appropriate method for asphalt shingles, and they should be able to explain why without prompting.
 
-We do roof cleaning throughout the Chico, Redding, Oroville, and Yuba City areas using ARMA-aligned soft wash protocols. If you have questions about your specific roof type or what you're seeing on your roofline, call us at **(619) 885-3894** — we're glad to talk through it before you commit to anything.
+We do roof cleaning throughout the Chico, Redding, Oroville, and Yuba City areas using ARMA-aligned soft wash protocols. If you have questions about your specific roof type or what you're seeing on your roofline, call us at **(614) 350-5978** — we're glad to talk through it before you commit to anything.
     `,
   },
   {
@@ -202,7 +202,7 @@ Violating those terms can create problems if you later need to make a warranty c
 
 If your panels haven't been cleaned in more than 12 months and you're in the Sacramento Valley, Butte County, or the Northern California foothills, it's worth scheduling service before you pull your next utility bill.
 
-Call **(619) 885-3894** or submit a request online. We serve Chico, Redding, Oroville, Yuba City, Paradise, and surrounding Northern California communities.
+Call **(614) 350-5978** or submit a request online. We serve Chico, Redding, Oroville, Yuba City, Paradise, and surrounding Northern California communities.
     `,
   },
 ];

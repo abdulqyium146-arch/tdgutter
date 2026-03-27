@@ -100,7 +100,7 @@ export default function ContactForm() {
         <input
           id="contact-phone"
           type="tel"
-          placeholder="(619) 885-3894"
+          placeholder="(614) 350-5978"
           className={inputClass}
           aria-invalid={!!errors.phone}
           {...register('phone')}

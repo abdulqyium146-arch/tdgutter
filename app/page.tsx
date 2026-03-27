@@ -38,7 +38,7 @@ export default function HomePage() {
             description:
               'Professional gutter cleaning, roof washing, window cleaning, solar panel cleaning & more — serving Northern California. Licensed & insured. Free inspections.',
             url: 'https://tdgutterandwindows.com',
-            telephone: '+1-619-885-3894',
+            telephone: '+1-614-350-5978',
             email: 'TopDown.GutterAndWindow@gmail.com',
             image: 'https://tdgutterandwindows.com/opengraph-image',
             logo: 'https://tdgutterandwindows.com/opengraph-image',
@@ -151,13 +151,13 @@ export default function HomePage() {
               </svg>
             </Link>
             <a
-              href="tel:6198853894"
+              href="tel:6143505978"
               className="inline-flex items-center gap-2 border-2 border-gold text-gold font-body font-semibold px-8 py-3.5 rounded-full hover:bg-gold/10 transition-colors duration-200 text-base"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              Call (619) 885-3894
+              Call (614) 350-5978
             </a>
           </div>
         </div>
@@ -230,12 +230,12 @@ export default function HomePage() {
             Call now and schedule an estimate today!
           </p>
           <a
-            href="tel:6198853894"
+            href="tel:6143505978"
             className="font-label text-navy-900 block animate-pulse-glow mb-6"
             style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', letterSpacing: '0.05em' }}
-            aria-label="Call us at (619) 885-3894"
+            aria-label="Call us at (614) 350-5978"
           >
-            (619) 885-3894
+            (614) 350-5978
           </a>
           <Link
             href="/service-request"
