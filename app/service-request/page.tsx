@@ -43,8 +43,14 @@ const breadcrumbSchema = {
 const webPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'Request a Free Gutter Cleaning Estimate — Northern California',
+  '@id': 'https://tdgutterandwindows.com/service-request#webpage',
   url: 'https://tdgutterandwindows.com/service-request',
+  name: 'Request a Free Gutter Cleaning Estimate — Northern California',
+  isPartOf: { '@id': 'https://tdgutterandwindows.com/#website' },
+  about: { '@id': 'https://tdgutterandwindows.com/#organization' },
+  datePublished: '2025-03-20',
+  dateModified: '2026-03-27',
+  inLanguage: 'en-US',
   potentialAction: {
     '@type': 'ReserveAction',
     target: {

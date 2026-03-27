@@ -40,6 +40,19 @@ const breadcrumbSchema = {
   ],
 };
 
+const blogCollectionPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': 'https://tdgutterandwindows.com/blog#webpage',
+  url: 'https://tdgutterandwindows.com/blog',
+  name: 'From the Gutter-Vine — Exterior Cleaning Blog | Top Down Gutter & Windows',
+  isPartOf: { '@id': 'https://tdgutterandwindows.com/#website' },
+  about: { '@id': 'https://tdgutterandwindows.com/#organization' },
+  datePublished: '2025-03-20',
+  dateModified: '2026-03-27',
+  inLanguage: 'en-US',
+};
+
 export default function BlogPage() {
   const blogSchema = {
     '@context': 'https://schema.org',
@@ -73,6 +86,7 @@ export default function BlogPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogCollectionPageSchema) }} />
     <div className="bg-navy-900 min-h-screen pt-24 pb-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}

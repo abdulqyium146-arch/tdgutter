@@ -43,10 +43,16 @@ const breadcrumbSchema = {
 const contactPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
-  name: 'Contact Top Down Gutter & Windows',
+  '@id': 'https://tdgutterandwindows.com/contact#webpage',
   url: 'https://tdgutterandwindows.com/contact',
+  name: 'Contact Top Down Gutter & Windows — Free Estimates',
+  isPartOf: { '@id': 'https://tdgutterandwindows.com/#website' },
+  about: { '@id': 'https://tdgutterandwindows.com/#organization' },
   description:
     'Contact Top Down Gutter & Windows for a free estimate on gutter cleaning, roof washing, window cleaning and exterior services in Northern California.',
+  datePublished: '2025-03-20',
+  dateModified: '2026-03-27',
+  inLanguage: 'en-US',
   mainEntity: {
     '@type': 'LocalBusiness',
     name: 'Top Down Gutter & Windows',

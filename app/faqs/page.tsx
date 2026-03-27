@@ -42,6 +42,19 @@ const breadcrumbSchema = {
   ],
 };
 
+const faqsWebPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': 'https://tdgutterandwindows.com/faqs#webpage',
+  url: 'https://tdgutterandwindows.com/faqs',
+  name: 'Gutter Cleaning FAQs — Northern California | Top Down Gutter & Windows',
+  isPartOf: { '@id': 'https://tdgutterandwindows.com/#website' },
+  about: { '@id': 'https://tdgutterandwindows.com/#organization' },
+  datePublished: '2025-03-20',
+  dateModified: '2026-03-27',
+  inLanguage: 'en-US',
+};
+
 export default function FAQsPage() {
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -60,6 +73,7 @@ export default function FAQsPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqsWebPageSchema) }} />
     <div className="bg-navy-900 min-h-screen pt-24 pb-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Header */}

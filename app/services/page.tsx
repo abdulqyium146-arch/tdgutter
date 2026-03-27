@@ -89,10 +89,24 @@ export default function ServicesPage() {
     })),
   };
 
+  const servicesCollectionPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': 'https://tdgutterandwindows.com/services#webpage',
+    url: 'https://tdgutterandwindows.com/services',
+    name: 'Exterior Cleaning Services in Northern California | Top Down Gutter & Windows',
+    isPartOf: { '@id': 'https://tdgutterandwindows.com/#website' },
+    about: { '@id': 'https://tdgutterandwindows.com/#organization' },
+    datePublished: '2025-03-20',
+    dateModified: '2026-03-27',
+    inLanguage: 'en-US',
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesCollectionPageSchema) }} />
 
       {/* ── HERO ── */}
       <section className="relative bg-navy-950 hero-pattern py-24 px-4 overflow-hidden" aria-labelledby="services-hub-heading">

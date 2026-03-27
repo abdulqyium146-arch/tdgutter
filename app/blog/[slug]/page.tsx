@@ -200,6 +200,10 @@ export default async function BlogPostPage({ params }: Props) {
     dateModified: post.isoDate,
     image: 'https://tdgutterandwindows.com/opengraph-image',
     articleSection: 'Home Maintenance',
+    isPartOf: { '@id': 'https://tdgutterandwindows.com/#website' },
+    inLanguage: 'en-US',
+    isAccessibleForFree: true,
+    license: 'https://creativecommons.org/licenses/by-nc/4.0/',
     speakable: {
       '@type': 'SpeakableSpecification',
       cssSelector: ['.article-excerpt'],
@@ -229,6 +233,23 @@ export default async function BlogPostPage({ params }: Props) {
     },
   };
 
+  const blogPostWebPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `https://tdgutterandwindows.com/blog/${post.slug}#webpage`,
+    url: `https://tdgutterandwindows.com/blog/${post.slug}`,
+    name: post.title,
+    isPartOf: { '@id': 'https://tdgutterandwindows.com/#website' },
+    about: { '@id': 'https://tdgutterandwindows.com/#organization' },
+    datePublished: post.isoDate,
+    dateModified: post.isoDate,
+    inLanguage: 'en-US',
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: 'https://tdgutterandwindows.com/opengraph-image',
+    },
+  };
+
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -243,6 +264,7 @@ export default async function BlogPostPage({ params }: Props) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostWebPageSchema) }} />
     <div className="bg-navy-900 min-h-screen pt-24 pb-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Back link */}

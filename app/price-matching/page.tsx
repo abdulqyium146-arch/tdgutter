@@ -63,8 +63,14 @@ const breadcrumbSchema = {
 const webPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'Price-Match Guarantee | Top Down Gutter & Windows',
+  '@id': 'https://tdgutterandwindows.com/price-matching#webpage',
   url: 'https://tdgutterandwindows.com/price-matching',
+  name: 'Price-Match Guarantee | Top Down Gutter & Windows',
+  isPartOf: { '@id': 'https://tdgutterandwindows.com/#website' },
+  about: { '@id': 'https://tdgutterandwindows.com/#organization' },
+  datePublished: '2025-03-20',
+  dateModified: '2026-03-27',
+  inLanguage: 'en-US',
   speakable: {
     '@type': 'SpeakableSpecification',
     cssSelector: ['h1', '.speakable'],

@@ -51,10 +51,16 @@ const breadcrumbSchema = {
 const aboutPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
-  name: 'About Top Down Gutter & Windows',
+  '@id': 'https://tdgutterandwindows.com/about#webpage',
+  url: 'https://tdgutterandwindows.com/about',
+  name: 'About Top Down Gutter & Windows — Chico, CA',
+  isPartOf: { '@id': 'https://tdgutterandwindows.com/#website' },
+  about: { '@id': 'https://tdgutterandwindows.com/#organization' },
   description:
     'Top Down Gutter & Windows is a licensed and insured exterior cleaning company based in Chico, CA, serving Northern California since 2024. Veteran and first responder proud.',
-  url: 'https://tdgutterandwindows.com/about',
+  datePublished: '2025-03-20',
+  dateModified: '2026-03-27',
+  inLanguage: 'en-US',
   mainEntity: {
     '@type': 'LocalBusiness',
     '@id': 'https://tdgutterandwindows.com/#business',

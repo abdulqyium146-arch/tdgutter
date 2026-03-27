@@ -116,85 +116,183 @@ export const metadata: Metadata = {
   // verification: { google: 'YOUR_VERIFICATION_TOKEN' },
 };
 
-// ── Global JSON-LD: WebSite schema ──
-const websiteSchema = {
+// ── Global JSON-LD: Combined @graph (WebSite + Organization) ──
+const globalGraphSchema = {
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'Top Down Gutter & Windows',
-  url: BASE_URL,
-  description:
-    'Professional gutter cleaning, roof washing, window cleaning & more — serving Northern California.',
-  publisher: {
-    '@type': 'Organization',
-    name: 'Top Down Gutter & Windows',
-    url: BASE_URL,
-    logo: {
-      '@type': 'ImageObject',
-      url: `${BASE_URL}/opengraph-image`,
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${BASE_URL}/#website`,
+      url: BASE_URL,
+      name: 'Top Down Gutter & Windows',
+      description:
+        'Professional gutter cleaning, roof washing, window cleaning & more — serving Northern California.',
+      publisher: { '@id': `${BASE_URL}/#organization` },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `${BASE_URL}/faqs?q={search_term_string}`,
+        },
+        'query-input': 'required name=search_term_string',
+      },
     },
-    contactPoint: {
-      '@type': 'ContactPoint',
+    {
+      '@type': ['Organization', 'LocalBusiness', 'HomeAndConstructionBusiness'],
+      '@id': `${BASE_URL}/#organization`,
+      name: 'Top Down Gutter & Windows',
+      legalName: 'Top Down Gutter & Windows',
+      alternateName: 'Top Down Gutter and Window Cleaning Services',
+      description:
+        'Licensed and insured exterior cleaning company serving Northern California since 2024. Specializing in gutter cleaning, roof soft-washing, window cleaning, solar panel cleaning, and house washing.',
+      slogan: 'From Roof to Windows, Let Us Clean Your Home From The Top Down',
+      url: BASE_URL,
       telephone: '+1-614-350-5978',
-      contactType: 'customer service',
-      areaServed: 'Northern California',
-      availableLanguage: 'English',
+      email: 'TopDown.GutterAndWindow@gmail.com',
+      foundingDate: '2024',
+      numberOfEmployees: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 10 },
+      logo: {
+        '@type': 'ImageObject',
+        '@id': `${BASE_URL}/#logo`,
+        url: `${BASE_URL}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        caption: 'Top Down Gutter & Windows',
+      },
+      image: { '@id': `${BASE_URL}/#logo` },
+      address: {
+        '@type': 'PostalAddress',
+        '@id': `${BASE_URL}/#address`,
+        streetAddress: '1180 E Lassen Ave',
+        addressLocality: 'Chico',
+        addressRegion: 'CA',
+        postalCode: '95928',
+        addressCountry: 'US',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 39.7285,
+        longitude: -121.8375,
+      },
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          telephone: '+1-614-350-5978',
+          contactType: 'customer service',
+          contactOption: 'TollFree',
+          areaServed: 'US-CA',
+          availableLanguage: { '@type': 'Language', name: 'English' },
+          hoursAvailable: [
+            {
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+              opens: '07:00',
+              closes: '19:00',
+            },
+            {
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: 'Saturday',
+              opens: '08:00',
+              closes: '17:00',
+            },
+          ],
+        },
+        {
+          '@type': 'ContactPoint',
+          email: 'TopDown.GutterAndWindow@gmail.com',
+          contactType: 'sales',
+          areaServed: 'US-CA',
+          availableLanguage: { '@type': 'Language', name: 'English' },
+        },
+      ],
+      hasCredential: [
+        {
+          '@type': 'EducationalOccupationalCredential',
+          name: 'California Contractor License',
+          credentialCategory: 'license',
+          recognizedBy: { '@type': 'Organization', name: 'State of California' },
+        },
+        {
+          '@type': 'EducationalOccupationalCredential',
+          name: 'General Liability Insurance',
+          credentialCategory: 'insurance',
+        },
+      ],
+      amenityFeature: [
+        { '@type': 'LocationFeatureSpecification', name: 'Free Inspections', value: true },
+        { '@type': 'LocationFeatureSpecification', name: 'Licensed & Insured', value: true },
+        { '@type': 'LocationFeatureSpecification', name: 'Price Match Guarantee', value: true },
+        {
+          '@type': 'LocationFeatureSpecification',
+          name: 'Veteran & First Responder Discounts',
+          value: true,
+        },
+      ],
+      areaServed: [
+        {
+          '@type': 'City',
+          name: 'Chico',
+          containedInPlace: { '@type': 'State', name: 'California' },
+        },
+        {
+          '@type': 'City',
+          name: 'Redding',
+          containedInPlace: { '@type': 'State', name: 'California' },
+        },
+        {
+          '@type': 'City',
+          name: 'Oroville',
+          containedInPlace: { '@type': 'State', name: 'California' },
+        },
+        {
+          '@type': 'City',
+          name: 'Yuba City',
+          containedInPlace: { '@type': 'State', name: 'California' },
+        },
+        {
+          '@type': 'City',
+          name: 'Red Bluff',
+          containedInPlace: { '@type': 'State', name: 'California' },
+        },
+        {
+          '@type': 'City',
+          name: 'Orland',
+          containedInPlace: { '@type': 'State', name: 'California' },
+        },
+        {
+          '@type': 'City',
+          name: 'Paradise',
+          containedInPlace: { '@type': 'State', name: 'California' },
+        },
+        {
+          '@type': 'City',
+          name: 'Grass Valley',
+          containedInPlace: { '@type': 'State', name: 'California' },
+        },
+      ],
+      serviceArea: {
+        '@type': 'GeoCircle',
+        geoMidpoint: { '@type': 'GeoCoordinates', latitude: 39.7285, longitude: -121.8375 },
+        geoRadius: '250000',
+      },
+      knowsAbout: [
+        'Gutter Cleaning',
+        'Roof Soft-Washing',
+        'Window Cleaning',
+        'Solar Panel Cleaning',
+        'House Washing',
+        'Gutter Installation',
+        'Gutter Repair',
+        'Gutter Guard Installation',
+        'Exterior Home Cleaning',
+        'Northern California Home Maintenance',
+      ],
+      sameAs: [
+        'https://www.facebook.com/p/Top-Down-Gutter-and-Window-Cleaning-Services-61568901527821/',
+        'https://www.yelp.com/biz/top-down-gutter-and-windows-chico-4',
+        'https://sites.google.com/view/tdgutterandwindows/home',
+      ],
     },
-  },
-  // Sitelinks SearchBox signal (optional, helps Google)
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: `${BASE_URL}/faqs?q={search_term_string}`,
-    },
-    'query-input': 'required name=search_term_string',
-  },
-};
-
-// ── Global JSON-LD: Standalone Organization schema ──
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Top Down Gutter & Windows',
-  alternateName: 'Top Down Gutter and Window Cleaning Services',
-  '@id': `${BASE_URL}/#organization`,
-  url: BASE_URL,
-  logo: { '@type': 'ImageObject', url: `${BASE_URL}/opengraph-image` },
-  image: `${BASE_URL}/opengraph-image`,
-  telephone: '+1-614-350-5978',
-  email: 'TopDown.GutterAndWindow@gmail.com',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '1180 E Lassen Ave',
-    addressLocality: 'Chico',
-    addressRegion: 'CA',
-    postalCode: '95928',
-    addressCountry: 'US',
-  },
-  areaServed: [
-    { '@type': 'City', name: 'Chico', containedInPlace: { '@type': 'State', name: 'California' } },
-    { '@type': 'City', name: 'Redding', containedInPlace: { '@type': 'State', name: 'California' } },
-    { '@type': 'City', name: 'Oroville', containedInPlace: { '@type': 'State', name: 'California' } },
-    { '@type': 'City', name: 'Yuba City', containedInPlace: { '@type': 'State', name: 'California' } },
-    { '@type': 'City', name: 'Red Bluff', containedInPlace: { '@type': 'State', name: 'California' } },
-    { '@type': 'City', name: 'Orland', containedInPlace: { '@type': 'State', name: 'California' } },
-    { '@type': 'City', name: 'Paradise', containedInPlace: { '@type': 'State', name: 'California' } },
-    { '@type': 'City', name: 'Grass Valley', containedInPlace: { '@type': 'State', name: 'California' } },
-  ],
-  knowsAbout: [
-    'Gutter Cleaning',
-    'Roof Soft-Washing',
-    'Window Cleaning',
-    'Solar Panel Cleaning',
-    'House Washing',
-    'Gutter Installation',
-    'Gutter Repair',
-    'Gutter Guard Installation',
-  ],
-  sameAs: [
-    'https://www.facebook.com/p/Top-Down-Gutter-and-Window-Cleaning-Services-61568901527821/',
-    'https://www.yelp.com/biz/top-down-gutter-and-windows-chico-4',
-    'https://sites.google.com/view/tdgutterandwindows/home',
   ],
 };
 
@@ -212,15 +310,10 @@ export default function RootLayout({
         {/* Preconnect to Google Fonts origin for faster font load */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Global WebSite schema */}
+        {/* Global @graph: WebSite + Organization knowledge graph */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
-        {/* Global Organization schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalGraphSchema) }}
         />
       </head>
       <body className="bg-navy-900 text-white min-h-screen flex flex-col">

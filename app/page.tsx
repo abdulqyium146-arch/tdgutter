@@ -32,10 +32,13 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': ['LocalBusiness', 'ProfessionalService'],
+            '@type': ['LocalBusiness', 'ProfessionalService', 'HomeAndConstructionBusiness'],
             '@id': 'https://tdgutterandwindows.com/#business',
             name: 'Top Down Gutter & Windows',
+            legalName: 'Top Down Gutter & Windows',
             alternateName: 'Top Down Gutter and Window Cleaning Services',
+            slogan: 'From Roof to Windows, Let Us Clean Your Home From The Top Down',
+            foundingDate: '2024',
             description:
               'Professional gutter cleaning, roof washing, window cleaning, solar panel cleaning & more — serving Northern California. Licensed & insured. Free inspections.',
             url: 'https://tdgutterandwindows.com',
@@ -44,6 +47,8 @@ export default function HomePage() {
             image: 'https://tdgutterandwindows.com/opengraph-image',
             logo: 'https://tdgutterandwindows.com/opengraph-image',
             priceRange: '$$',
+            currenciesAccepted: 'USD',
+            paymentAccepted: 'Cash, Check, Credit Card',
             address: {
               '@type': 'PostalAddress',
               streetAddress: '1180 E Lassen Ave',
@@ -72,6 +77,16 @@ export default function HomePage() {
                 closes: '17:00',
               },
             ],
+            amenityFeature: [
+              { '@type': 'LocationFeatureSpecification', name: 'Free Inspections', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Licensed & Insured', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Price Match Guarantee', value: true },
+              {
+                '@type': 'LocationFeatureSpecification',
+                name: 'Veteran & First Responder Discounts',
+                value: true,
+              },
+            ],
             areaServed: [
               { '@type': 'City', name: 'Redding', containedInPlace: { '@type': 'State', name: 'California' } },
               { '@type': 'City', name: 'Red Bluff', containedInPlace: { '@type': 'State', name: 'California' } },
@@ -82,6 +97,23 @@ export default function HomePage() {
               { '@type': 'City', name: 'Grass Valley', containedInPlace: { '@type': 'State', name: 'California' } },
               { '@type': 'City', name: 'Yuba City', containedInPlace: { '@type': 'State', name: 'California' } },
             ],
+            serviceArea: {
+              '@type': 'GeoCircle',
+              geoMidpoint: { '@type': 'GeoCoordinates', latitude: 39.7285, longitude: -121.8375 },
+              geoRadius: '250000',
+            },
+            makesOffer: services.map((s) => ({
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: s.title,
+                url: `https://tdgutterandwindows.com/services/${s.id}`,
+              },
+              seller: { '@id': 'https://tdgutterandwindows.com/#organization' },
+              areaServed: 'Northern California',
+              availability: 'https://schema.org/InStock',
+              priceCurrency: 'USD',
+            })),
             hasOfferCatalog: {
               '@type': 'OfferCatalog',
               name: 'Exterior Cleaning Services',
@@ -106,6 +138,69 @@ export default function HomePage() {
               '@type': 'SpeakableSpecification',
               cssSelector: ['#hero-heading', '.cta-strip-number'],
             },
+          }),
+        }}
+      />
+
+      {/* JSON-LD WebPage Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebPage',
+            '@id': 'https://tdgutterandwindows.com/#webpage',
+            url: 'https://tdgutterandwindows.com',
+            name: 'Gutter Cleaning & Exterior Washing | Top Down Gutter & Windows — Chico, CA',
+            isPartOf: { '@id': 'https://tdgutterandwindows.com/#website' },
+            about: { '@id': 'https://tdgutterandwindows.com/#organization' },
+            primaryImageOfPage: {
+              '@type': 'ImageObject',
+              url: 'https://tdgutterandwindows.com/opengraph-image',
+            },
+            datePublished: '2025-03-20',
+            dateModified: '2026-03-27',
+            inLanguage: 'en-US',
+            speakable: {
+              '@type': 'SpeakableSpecification',
+              cssSelector: ['#hero-heading', '.cta-strip-number'],
+            },
+          }),
+        }}
+      />
+
+      {/* JSON-LD Event Schema — Spring Gutter Cleaning Season */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Event',
+            name: 'Spring Gutter Cleaning & Roof Washing Season — Northern California',
+            description:
+              'Top Down Gutter & Windows provides spring gutter cleaning, roof soft-washing, and full exterior cleaning services across Northern California. Schedule your spring appointment now.',
+            startDate: '2026-03-01',
+            endDate: '2026-06-30',
+            eventStatus: 'https://schema.org/EventScheduled',
+            eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+            location: {
+              '@type': 'Place',
+              name: 'Northern California',
+              address: {
+                '@type': 'PostalAddress',
+                addressRegion: 'CA',
+                addressCountry: 'US',
+              },
+            },
+            organizer: { '@id': 'https://tdgutterandwindows.com/#organization' },
+            offers: {
+              '@type': 'Offer',
+              url: 'https://tdgutterandwindows.com/service-request',
+              availability: 'https://schema.org/InStock',
+              priceCurrency: 'USD',
+              seller: { '@id': 'https://tdgutterandwindows.com/#organization' },
+            },
+            url: 'https://tdgutterandwindows.com/service-request',
           }),
         }}
       />

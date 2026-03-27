@@ -155,12 +155,94 @@ export default async function ServicePage({ params }: Props) {
     supply: [{ '@type': 'HowToSupply', name: 'Biodegradable cleaning solutions' }],
   };
 
+  const webPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `https://tdgutterandwindows.com/services/${slug}#webpage`,
+    url: `https://tdgutterandwindows.com/services/${slug}`,
+    name: content.pageTitle,
+    isPartOf: { '@id': 'https://tdgutterandwindows.com/#website' },
+    about: { '@id': 'https://tdgutterandwindows.com/#organization' },
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: 'https://tdgutterandwindows.com/opengraph-image',
+    },
+    datePublished: '2025-03-20',
+    dateModified: '2026-03-27',
+    inLanguage: 'en-US',
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tdgutterandwindows.com' },
+        { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://tdgutterandwindows.com/services' },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: service.title,
+          item: `https://tdgutterandwindows.com/services/${slug}`,
+        },
+      ],
+    },
+  };
+
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: service.title,
+    description: content.intro,
+    brand: { '@id': 'https://tdgutterandwindows.com/#organization' },
+    category: 'Home Services > Exterior Cleaning',
+    url: `https://tdgutterandwindows.com/services/${slug}`,
+    image: 'https://tdgutterandwindows.com/opengraph-image',
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      areaServed: locations.map((loc) => ({
+        '@type': 'City',
+        name: loc.city,
+        containedInPlace: { '@type': 'State', name: 'California' },
+      })),
+      seller: { '@id': 'https://tdgutterandwindows.com/#organization' },
+      url: 'https://tdgutterandwindows.com/service-request',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        priceCurrency: 'USD',
+        valueAddedTaxIncluded: false,
+        description: content.pricingNote,
+      },
+    },
+    additionalProperty: [
+      { '@type': 'PropertyValue', name: 'Service Area', value: 'Northern California' },
+      { '@type': 'PropertyValue', name: 'Licensed & Insured', value: 'Yes' },
+      { '@type': 'PropertyValue', name: 'Free Inspection', value: 'Yes' },
+    ],
+  };
+
+  const serviceChannelSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ServiceChannel',
+    name: `Book ${service.title} Online`,
+    serviceUrl: 'https://tdgutterandwindows.com/service-request',
+    servicePhone: '+1-614-350-5978',
+    availableLanguage: { '@type': 'Language', name: 'English' },
+    processingTime: 'P1D',
+    providesService: {
+      '@type': 'Service',
+      name: service.title,
+      provider: { '@id': 'https://tdgutterandwindows.com/#organization' },
+    },
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceChannelSchema) }} />
 
       {/* ── HERO ── */}
       <section className="relative bg-navy-950 hero-pattern py-24 px-4 overflow-hidden" aria-labelledby="service-hero-heading">

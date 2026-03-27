@@ -74,9 +74,12 @@ export default async function LocationPage({ params }: Props) {
 
   const localBusinessSchema = {
     '@context': 'https://schema.org',
-    '@type': ['LocalBusiness', 'ProfessionalService'],
+    '@type': ['LocalBusiness', 'ProfessionalService', 'HomeAndConstructionBusiness'],
     '@id': 'https://tdgutterandwindows.com/#business',
     name: 'Top Down Gutter & Windows',
+    legalName: 'Top Down Gutter & Windows',
+    slogan: 'From Roof to Windows, Let Us Clean Your Home From The Top Down',
+    foundingDate: '2024',
     description: `Professional gutter cleaning, roof washing, window cleaning, solar panel cleaning & exterior services in ${location.city}, ${location.stateAbbr}. Licensed & insured.`,
     url: `https://tdgutterandwindows.com/locations/${location.slug}`,
     telephone: '+1-614-350-5978',
@@ -110,11 +113,44 @@ export default async function LocationPage({ params }: Props) {
         closes: '17:00',
       },
     ],
+    amenityFeature: [
+      { '@type': 'LocationFeatureSpecification', name: 'Free Inspections', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Licensed & Insured', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Price Match Guarantee', value: true },
+      {
+        '@type': 'LocationFeatureSpecification',
+        name: 'Veteran & First Responder Discounts',
+        value: true,
+      },
+    ],
     areaServed: {
       '@type': 'City',
       name: location.city,
       containedInPlace: { '@type': 'State', name: 'California' },
     },
+    serviceArea: {
+      '@type': 'GeoCircle',
+      geoMidpoint: {
+        '@type': 'GeoCoordinates',
+        latitude: location.lat,
+        longitude: location.lng,
+      },
+      geoRadius: '80000',
+    },
+    makesOffer: services.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: s.title,
+        url: `https://tdgutterandwindows.com/services/${s.id}`,
+      },
+      availability: 'https://schema.org/InStock',
+      areaServed: {
+        '@type': 'City',
+        name: location.city,
+        containedInPlace: { '@type': 'State', name: 'California' },
+      },
+    })),
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: `Exterior Cleaning Services in ${location.city}, CA`,
@@ -127,6 +163,41 @@ export default async function LocationPage({ params }: Props) {
       '@type': 'SpeakableSpecification',
       cssSelector: ['h1', '.location-intro'],
     },
+  };
+
+  const webPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `https://tdgutterandwindows.com/locations/${location.slug}#webpage`,
+    url: `https://tdgutterandwindows.com/locations/${location.slug}`,
+    name: location.pageTitle,
+    isPartOf: { '@id': 'https://tdgutterandwindows.com/#website' },
+    about: { '@id': 'https://tdgutterandwindows.com/#organization' },
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: 'https://tdgutterandwindows.com/opengraph-image',
+    },
+    datePublished: '2025-03-20',
+    dateModified: '2026-03-27',
+    inLanguage: 'en-US',
+  };
+
+  const placeSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Place',
+    name: `${location.city}, California`,
+    description: location.intro,
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: location.lat,
+      longitude: location.lng,
+    },
+    containedInPlace: {
+      '@type': 'State',
+      name: 'California',
+      containedInPlace: { '@type': 'Country', name: 'United States' },
+    },
+    hasMap: `https://maps.google.com/?q=${encodeURIComponent(location.city + ', CA')}`,
   };
 
   const breadcrumbSchema = {
@@ -176,6 +247,8 @@ export default async function LocationPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />
 
       {/* ── HERO ── */}
       <section className="relative bg-navy-950 hero-pattern py-24 px-4 overflow-hidden" aria-labelledby="location-hero-heading">

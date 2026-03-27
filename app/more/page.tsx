@@ -114,10 +114,16 @@ const breadcrumbSchema = {
 const webPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'More Resources — Top Down Gutter & Windows',
+  '@id': 'https://tdgutterandwindows.com/more#webpage',
   url: 'https://tdgutterandwindows.com/more',
+  name: 'More Resources — Top Down Gutter & Windows',
+  isPartOf: { '@id': 'https://tdgutterandwindows.com/#website' },
+  about: { '@id': 'https://tdgutterandwindows.com/#organization' },
   description:
     'Explore blog posts, FAQs, price matching, veteran discounts, service areas, and booking for Top Down Gutter & Windows — Northern California exterior cleaning experts.',
+  datePublished: '2025-03-20',
+  dateModified: '2026-03-27',
+  inLanguage: 'en-US',
   mainEntity: {
     '@type': 'ItemList',
     name: 'Top Down Gutter & Windows Resources',

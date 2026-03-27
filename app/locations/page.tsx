@@ -84,10 +84,24 @@ export default function LocationsPage() {
     })),
   };
 
+  const locationsCollectionPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': 'https://tdgutterandwindows.com/locations#webpage',
+    url: 'https://tdgutterandwindows.com/locations',
+    name: 'Northern California Service Areas | Top Down Gutter & Windows',
+    isPartOf: { '@id': 'https://tdgutterandwindows.com/#website' },
+    about: { '@id': 'https://tdgutterandwindows.com/#organization' },
+    datePublished: '2025-03-20',
+    dateModified: '2026-03-27',
+    inLanguage: 'en-US',
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(locationsCollectionPageSchema) }} />
 
       {/* ── HERO ── */}
       <section className="relative bg-navy-950 hero-pattern py-24 px-4 overflow-hidden" aria-labelledby="locations-hero-heading">
