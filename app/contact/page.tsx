@@ -7,12 +7,73 @@ export const metadata: Metadata = {
   title: 'Contact Us — Free Estimates | Top Down Gutter & Windows',
   description:
     "Contact Top Down Gutter & Windows in Chico, CA. Request a free estimate for gutter cleaning, roof washing, window cleaning & more. We respond within 24 hours. Call (614) 350-5978.",
+  keywords: [
+    'contact top down gutter windows',
+    'free gutter inspection chico ca',
+    'gutter cleaning estimate northern california',
+    'schedule gutter cleaning chico',
+    'exterior cleaning quote redding oroville',
+  ],
   alternates: { canonical: 'https://tdgutterandwindows.com/contact' },
-  openGraph: { url: 'https://tdgutterandwindows.com/contact', title: 'Contact Top Down Gutter & Windows — Free Estimates' },
+  openGraph: {
+    type: 'website',
+    url: 'https://tdgutterandwindows.com/contact',
+    title: 'Contact Top Down Gutter & Windows — Free Estimates',
+    description: 'Contact Top Down Gutter & Windows for a free estimate on gutter cleaning, roof washing, window cleaning and exterior services in Northern California.',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Contact Top Down Gutter & Windows — Chico, CA' }],
+    siteName: 'Top Down Gutter & Windows',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Top Down Gutter & Windows — Free Estimates',
+    description: 'Request a free gutter cleaning or exterior cleaning estimate in Northern California. We respond within 24 hours.',
+    images: ['/opengraph-image'],
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tdgutterandwindows.com' },
+    { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://tdgutterandwindows.com/contact' },
+  ],
+};
+
+const contactPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact Top Down Gutter & Windows',
+  url: 'https://tdgutterandwindows.com/contact',
+  description:
+    'Contact Top Down Gutter & Windows for a free estimate on gutter cleaning, roof washing, window cleaning and exterior services in Northern California.',
+  mainEntity: {
+    '@type': 'LocalBusiness',
+    name: 'Top Down Gutter & Windows',
+    telephone: '+1-614-350-5978',
+    email: 'TopDown.GutterAndWindow@gmail.com',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '07:00',
+        closes: '19:00',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Saturday',
+        opens: '08:00',
+        closes: '17:00',
+      },
+    ],
+  },
 };
 
 export default function ContactPage() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }} />
     <div className="bg-navy-900 min-h-screen pt-24 pb-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
@@ -112,5 +173,6 @@ export default function ContactPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

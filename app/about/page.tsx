@@ -7,8 +7,29 @@ export const metadata: Metadata = {
   title: 'About Us — Top Down Gutter & Windows | Chico, CA',
   description:
     'Learn about Top Down Gutter & Windows — a Northern California exterior cleaning company based in Chico, CA. Built on honest service, veteran pride, and real results. Serving Redding to Yuba City.',
+  keywords: [
+    'about top down gutter windows',
+    'gutter cleaning company chico ca',
+    'northern california exterior cleaning',
+    'licensed insured gutter company',
+    'veteran owned home services chico',
+    'butte county gutter cleaning',
+  ],
   alternates: { canonical: 'https://tdgutterandwindows.com/about' },
-  openGraph: { url: 'https://tdgutterandwindows.com/about', title: 'About Top Down Gutter & Windows — Chico, CA' },
+  openGraph: {
+    type: 'website',
+    url: 'https://tdgutterandwindows.com/about',
+    title: 'About Top Down Gutter & Windows — Chico, CA',
+    description: 'Top Down Gutter & Windows is a licensed and insured exterior cleaning company based in Chico, CA, serving Northern California. Veteran and first responder proud.',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Top Down Gutter & Windows — Northern California Exterior Cleaning Company' }],
+    siteName: 'Top Down Gutter & Windows',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Top Down Gutter & Windows — Chico, CA',
+    description: 'Licensed and insured exterior cleaning company based in Chico, CA. Serving Northern California with gutter cleaning, roof washing, and more.',
+    images: ['/opengraph-image'],
+  },
 };
 
 const serviceAreas = [
@@ -18,8 +39,43 @@ const serviceAreas = [
   'Marysville', 'Colusa', 'Los Molinos',
 ];
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tdgutterandwindows.com' },
+    { '@type': 'ListItem', position: 2, name: 'About Us', item: 'https://tdgutterandwindows.com/about' },
+  ],
+};
+
+const aboutPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'About Top Down Gutter & Windows',
+  description:
+    'Top Down Gutter & Windows is a licensed and insured exterior cleaning company based in Chico, CA, serving Northern California since 2024. Veteran and first responder proud.',
+  url: 'https://tdgutterandwindows.com/about',
+  mainEntity: {
+    '@type': 'LocalBusiness',
+    '@id': 'https://tdgutterandwindows.com/#business',
+    name: 'Top Down Gutter & Windows',
+    telephone: '+1-614-350-5978',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '1180 E Lassen Ave',
+      addressLocality: 'Chico',
+      addressRegion: 'CA',
+      postalCode: '95928',
+      addressCountry: 'US',
+    },
+  },
+};
+
 export default function AboutPage() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }} />
     <div className="bg-navy-900 min-h-screen pt-24 pb-20">
       {/* Hero strip */}
       <div
@@ -210,5 +266,6 @@ export default function AboutPage() {
 
       </div>
     </div>
+    </>
   );
 }

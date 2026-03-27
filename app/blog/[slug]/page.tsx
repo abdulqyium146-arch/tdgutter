@@ -17,9 +17,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getBlogPost(slug);
   if (!post) return { title: 'Post Not Found', robots: { index: false } };
   const canonicalUrl = `https://tdgutterandwindows.com/blog/${slug}`;
+  const titleWords = post.title.toLowerCase().split(/\s+/).slice(0, 6).join(' ');
   return {
     title: post.title,
     description: post.excerpt,
+    keywords: [
+      titleWords,
+      'gutter cleaning northern california',
+      'exterior cleaning chico ca',
+      'home maintenance northern california',
+      'top down gutter windows blog',
+    ],
     alternates: { canonical: canonicalUrl },
     openGraph: {
       type: 'article',
@@ -29,6 +37,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: post.isoDate,
       authors: ['Top Down Gutter & Windows'],
       siteName: 'Top Down Gutter & Windows',
+      images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: post.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: ['/opengraph-image'],
     },
   };
 }
@@ -184,6 +199,16 @@ export default async function BlogPostPage({ params }: Props) {
     datePublished: post.isoDate,
     dateModified: post.isoDate,
     image: 'https://tdgutterandwindows.com/opengraph-image',
+    articleSection: 'Home Maintenance',
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.article-excerpt'],
+    },
+    about: [
+      { '@type': 'Service', name: 'Gutter Cleaning', provider: { '@type': 'LocalBusiness', name: 'Top Down Gutter & Windows' } },
+      { '@type': 'Service', name: 'Roof Soft-Washing', provider: { '@type': 'LocalBusiness', name: 'Top Down Gutter & Windows' } },
+      { '@type': 'Place', name: 'Northern California', containedInPlace: { '@type': 'State', name: 'California' } },
+    ],
     author: {
       '@type': 'Organization',
       name: 'Top Down Gutter & Windows',
@@ -247,7 +272,7 @@ export default async function BlogPostPage({ params }: Props) {
           <GoldDivider className="mb-8" />
 
           {/* Excerpt lead */}
-          <p className="font-body text-slate-300 text-lg leading-relaxed mb-8 border-l-4 border-gold pl-5 italic">
+          <p className="article-excerpt font-body text-slate-300 text-lg leading-relaxed mb-8 border-l-4 border-gold pl-5 italic">
             {post.excerpt}
           </p>
 

@@ -8,12 +8,71 @@ export const metadata: Metadata = {
   title: 'From the Gutter-Vine — Exterior Cleaning Blog',
   description:
     'Expert tips, guides, and insights on gutter cleaning, roof washing, soft washing, window cleaning, and home exterior maintenance from Top Down Gutter & Windows in Chico, CA.',
+  keywords: [
+    'gutter cleaning tips northern california',
+    'roof washing guide chico',
+    'home exterior maintenance blog',
+    'when to clean gutters california',
+  ],
   alternates: { canonical: 'https://tdgutterandwindows.com/blog' },
-  openGraph: { url: 'https://tdgutterandwindows.com/blog', title: 'From the Gutter-Vine — Exterior Cleaning Blog' },
+  openGraph: {
+    type: 'website',
+    url: 'https://tdgutterandwindows.com/blog',
+    title: 'From the Gutter-Vine — Exterior Cleaning Blog | Top Down Gutter & Windows',
+    description: 'Expert guides on gutter cleaning, roof washing, and exterior home maintenance in Northern California.',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Top Down Gutter & Windows Blog — Exterior Cleaning Tips' }],
+    siteName: 'Top Down Gutter & Windows',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'From the Gutter-Vine — Exterior Cleaning Blog | Top Down Gutter & Windows',
+    description: 'Expert tips, guides, and insights on gutter cleaning, roof washing, and home exterior maintenance from Northern California.',
+    images: ['/opengraph-image'],
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tdgutterandwindows.com' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://tdgutterandwindows.com/blog' },
+  ],
 };
 
 export default function BlogPage() {
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'Top Down Gutter & Windows Blog',
+    url: 'https://tdgutterandwindows.com/blog',
+    description:
+      'Expert guides on gutter cleaning, roof washing, and exterior home maintenance in Northern California.',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Top Down Gutter & Windows',
+      url: 'https://tdgutterandwindows.com',
+    },
+    blogPost: blogPosts.map((post) => ({
+      '@type': 'BlogPosting',
+      headline: post.title,
+      description: post.excerpt,
+      url: `https://tdgutterandwindows.com/blog/${post.slug}`,
+      datePublished: post.isoDate,
+      dateModified: post.isoDate,
+      image: 'https://tdgutterandwindows.com/opengraph-image',
+      author: {
+        '@type': 'Organization',
+        name: 'Top Down Gutter & Windows',
+        url: 'https://tdgutterandwindows.com',
+      },
+    })),
+  };
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
     <div className="bg-navy-900 min-h-screen pt-24 pb-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
@@ -78,5 +137,6 @@ export default function BlogPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

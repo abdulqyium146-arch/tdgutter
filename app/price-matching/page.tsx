@@ -7,8 +7,27 @@ export const metadata: Metadata = {
   title: "Price-Match Guarantee — We Beat Any Competitor | Top Down Gutter",
   description:
     "Top Down Gutter & Windows will match any licensed competitor's price for gutter cleaning, roof washing, window cleaning & more in Northern California. Guaranteed.",
+  keywords: [
+    'price match gutter cleaning northern california',
+    'best gutter cleaning price chico',
+    'cheapest gutter cleaning redding',
+    'gutter cleaning price match guarantee',
+  ],
   alternates: { canonical: 'https://tdgutterandwindows.com/price-matching' },
-  openGraph: { url: 'https://tdgutterandwindows.com/price-matching', title: "Price-Match Guarantee — Top Down Gutter & Windows" },
+  openGraph: {
+    type: 'website',
+    url: 'https://tdgutterandwindows.com/price-matching',
+    title: 'Price-Match Guarantee — Top Down Gutter & Windows',
+    description: "Top Down Gutter & Windows will match any licensed competitor's price for gutter cleaning, roof washing, window cleaning & more in Northern California. Guaranteed.",
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Top Down Gutter & Windows Price-Match Guarantee' }],
+    siteName: 'Top Down Gutter & Windows',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Price-Match Guarantee — Top Down Gutter & Windows',
+    description: "We'll match any licensed competitor's price for gutter cleaning and exterior services in Northern California.",
+    images: ['/opengraph-image'],
+  },
 };
 
 const steps = [
@@ -32,8 +51,63 @@ const steps = [
   },
 ];
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tdgutterandwindows.com' },
+    { '@type': 'ListItem', position: 2, name: 'Price-Matching', item: 'https://tdgutterandwindows.com/price-matching' },
+  ],
+};
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Price-Match Guarantee | Top Down Gutter & Windows',
+  url: 'https://tdgutterandwindows.com/price-matching',
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', '.speakable'],
+  },
+};
+
+const priceMatchFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Does Top Down Gutter & Windows offer price matching?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Top Down Gutter & Windows will match any written quote from a licensed and insured competitor for the same scope of exterior cleaning work in Northern California. This includes gutter cleaning, roof soft-washing, window cleaning, solar panel cleaning, house washing, and gutter guard installation. There is no negotiation required — we review the quote, confirm the scope matches, and match the price.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I submit a competitor quote for price matching?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Call us at (614) 350-5978 or email TopDown.GutterAndWindow@gmail.com with your written competitor quote. The quote must be for the same service type and property scope. We will review it — usually within one phone call — confirm the scope aligns with what we would perform at your property, and match the price. Screenshots of email or text estimates are accepted as long as they are dated within the last 30 days.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What quotes qualify for the price match guarantee?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'To qualify, the competing quote must come from a California-licensed and insured exterior cleaning company actively operating in Northern California. The quote must cover the identical service, same linear footage or surface area, and the same property. It must be in writing and dated within the last 30 days. The guarantee does not apply to promotional pricing, coupon-based discounts, first-time-customer flash sales, or quotes that fall below our verifiable cost of materials and labor.',
+      },
+    },
+  ],
+};
+
 export default function PriceMatchingPage() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(priceMatchFaqSchema) }} />
     <div className="bg-navy-900 min-h-screen pt-24 pb-20">
       {/* Hero */}
       <div
@@ -145,5 +219,6 @@ export default function PriceMatchingPage() {
 
       </div>
     </div>
+    </>
   );
 }

@@ -21,15 +21,43 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const location = locations.find((loc) => loc.slug === city);
   if (!location) return { title: 'Location Not Found', robots: { index: false } };
   const canonicalUrl = `https://tdgutterandwindows.com/locations/${city}`;
+
+  const keywords = [
+    `gutter cleaning ${location.city.toLowerCase()} ca`,
+    `roof washing ${location.city.toLowerCase()}`,
+    `window cleaning ${location.city.toLowerCase()} california`,
+    `exterior cleaning ${location.county.toLowerCase()}`,
+    `${location.city.toLowerCase()} gutter company`,
+    `gutter repair ${location.city.toLowerCase()} ca`,
+    `solar panel cleaning ${location.city.toLowerCase()}`,
+    `house washing ${location.city.toLowerCase()} ca`,
+  ];
+
   return {
     title: location.pageTitle,
     description: location.metaDescription,
+    keywords,
     alternates: { canonical: canonicalUrl },
     openGraph: {
       url: canonicalUrl,
       title: location.pageTitle,
       description: location.metaDescription,
       siteName: 'Top Down Gutter & Windows',
+      type: 'website',
+      images: [
+        {
+          url: '/opengraph-image',
+          width: 1200,
+          height: 630,
+          alt: `Top Down Gutter & Windows — Serving ${location.city}, CA`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: location.pageTitle,
+      description: location.metaDescription,
+      images: ['/opengraph-image'],
     },
   };
 }
@@ -47,7 +75,7 @@ export default async function LocationPage({ params }: Props) {
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'ProfessionalService'],
-    '@id': `https://tdgutterandwindows.com/locations/${location.slug}#business`,
+    '@id': 'https://tdgutterandwindows.com/#business',
     name: 'Top Down Gutter & Windows',
     description: `Professional gutter cleaning, roof washing, window cleaning, solar panel cleaning & exterior services in ${location.city}, ${location.stateAbbr}. Licensed & insured.`,
     url: `https://tdgutterandwindows.com/locations/${location.slug}`,
@@ -55,6 +83,8 @@ export default async function LocationPage({ params }: Props) {
     email: 'TopDown.GutterAndWindow@gmail.com',
     image: 'https://tdgutterandwindows.com/opengraph-image',
     priceRange: '$$',
+    currenciesAccepted: 'USD',
+    paymentAccepted: 'Cash, Check, Credit Card',
     address: {
       '@type': 'PostalAddress',
       addressLocality: location.city,
@@ -66,6 +96,20 @@ export default async function LocationPage({ params }: Props) {
       latitude: location.lat,
       longitude: location.lng,
     },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '07:00',
+        closes: '19:00',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Saturday'],
+        opens: '08:00',
+        closes: '17:00',
+      },
+    ],
     areaServed: {
       '@type': 'City',
       name: location.city,
@@ -79,6 +123,48 @@ export default async function LocationPage({ params }: Props) {
         itemOffered: { '@type': 'Service', name: s.title, description: s.description },
       })),
     },
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', '.location-intro'],
+    },
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://tdgutterandwindows.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Locations',
+        item: 'https://tdgutterandwindows.com/locations',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: `${location.city}, CA`,
+        item: `https://tdgutterandwindows.com/locations/${location.slug}`,
+      },
+    ],
+  };
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: location.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
   };
 
   const nearbyLocationObjects = locations.filter(
@@ -88,6 +174,8 @@ export default async function LocationPage({ params }: Props) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* ── HERO ── */}
       <section className="relative bg-navy-950 hero-pattern py-24 px-4 overflow-hidden" aria-labelledby="location-hero-heading">
@@ -110,7 +198,7 @@ export default async function LocationPage({ params }: Props) {
             <span className="text-gold">{location.city}</span>, CA
           </h1>
           <GoldDivider className="mx-auto mb-6" />
-          <p className="font-body text-slate text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="location-intro font-body text-slate text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
             {location.intro}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

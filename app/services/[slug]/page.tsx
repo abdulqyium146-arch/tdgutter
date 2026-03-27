@@ -22,15 +22,39 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const content = serviceContent.find((s) => s.slug === slug);
   if (!content) return { title: 'Service Not Found', robots: { index: false } };
   const canonicalUrl = `https://tdgutterandwindows.com/services/${slug}`;
+
+  const keywords = [
+    ...locations.map((loc) => `${content.pageTitle.split('|')[0].trim().toLowerCase()} ${loc.city.toLowerCase()} ca`),
+    `${content.pageTitle.split('|')[0].trim().toLowerCase()} northern california`,
+    `${content.pageTitle.split('|')[0].trim().toLowerCase()} chico redding oroville`,
+    `top down gutter ${slug.replace(/-/g, ' ')}`,
+  ];
+
   return {
     title: content.pageTitle,
     description: content.metaDescription,
+    keywords,
     alternates: { canonical: canonicalUrl },
     openGraph: {
       url: canonicalUrl,
       title: content.pageTitle,
       description: content.metaDescription,
       siteName: 'Top Down Gutter & Windows',
+      type: 'website',
+      images: [
+        {
+          url: '/opengraph-image',
+          width: 1200,
+          height: 630,
+          alt: content.headline,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: content.pageTitle,
+      description: content.metaDescription,
+      images: ['/opengraph-image'],
     },
   };
 }
@@ -53,6 +77,10 @@ export default async function ServicePage({ params }: Props) {
     name: service.title,
     description: content.intro,
     url: `https://tdgutterandwindows.com/services/${slug}`,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', '.service-intro'],
+    },
     provider: {
       '@type': 'LocalBusiness',
       name: 'Top Down Gutter & Windows',
@@ -87,10 +115,52 @@ export default async function ServicePage({ params }: Props) {
     })),
   };
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://tdgutterandwindows.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Services',
+        item: 'https://tdgutterandwindows.com/services',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: service.title,
+        item: `https://tdgutterandwindows.com/services/${slug}`,
+      },
+    ],
+  };
+
+  const howToSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: `How ${service.title} Works`,
+    description: content.intro,
+    step: content.processSteps.map((step, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: step.step,
+      text: step.description,
+    })),
+    tool: [{ '@type': 'HowToTool', name: 'Professional exterior cleaning equipment' }],
+    supply: [{ '@type': 'HowToSupply', name: 'Biodegradable cleaning solutions' }],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
 
       {/* ── HERO ── */}
       <section className="relative bg-navy-950 hero-pattern py-24 px-4 overflow-hidden" aria-labelledby="service-hero-heading">
@@ -112,7 +182,7 @@ export default async function ServicePage({ params }: Props) {
             {content.headline}
           </h1>
           <GoldDivider className="mx-auto mb-6" />
-          <p className="font-body text-slate text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="service-intro font-body text-slate text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
             {content.intro}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

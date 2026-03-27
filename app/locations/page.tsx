@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   title: 'Northern California Service Areas | Top Down Gutter & Windows',
   description:
     'Top Down Gutter & Windows serves Chico, Redding, Oroville, Yuba City, Red Bluff, Orland, Paradise & Grass Valley. Gutter cleaning, roof washing, window cleaning & more across Northern California.',
+  keywords: [
+    'northern california gutter cleaning',
+    'chico redding oroville gutter service',
+    'grass valley paradise exterior cleaning',
+    'yuba city red bluff gutter company',
+    'butte county shasta county nevada county gutter',
+  ],
   alternates: {
     canonical: 'https://tdgutterandwindows.com/locations',
   },
@@ -18,12 +25,70 @@ export const metadata: Metadata = {
     description:
       'Serving 8 communities across Northern California with professional gutter cleaning, roof washing, window cleaning & exterior services.',
     siteName: 'Top Down Gutter & Windows',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Top Down Gutter & Windows — Northern California Service Areas',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Northern California Service Areas | Top Down Gutter & Windows',
+    description:
+      'Serving 8 communities across Northern California with professional gutter cleaning, roof washing, window cleaning & exterior services.',
+    images: ['/opengraph-image'],
   },
 };
 
 export default function LocationsPage() {
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://tdgutterandwindows.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Locations',
+        item: 'https://tdgutterandwindows.com/locations',
+      },
+    ],
+  };
+
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Northern California Service Areas — Top Down Gutter & Windows',
+    description: 'Cities and communities served by Top Down Gutter & Windows in Northern California',
+    url: 'https://tdgutterandwindows.com/locations',
+    numberOfItems: locations.length,
+    itemListElement: locations.map((loc, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: `${loc.city}, CA`,
+      url: `https://tdgutterandwindows.com/locations/${loc.slug}`,
+      item: {
+        '@type': 'City',
+        name: loc.city,
+        containedInPlace: { '@type': 'State', name: 'California' },
+      },
+    })),
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+
       {/* ── HERO ── */}
       <section className="relative bg-navy-950 hero-pattern py-24 px-4 overflow-hidden" aria-labelledby="locations-hero-heading">
         <div

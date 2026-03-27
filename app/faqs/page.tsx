@@ -6,14 +6,30 @@ import GoldDivider from '@/components/GoldDivider';
 import { faqs } from '@/lib/faqs';
 
 export const metadata: Metadata = {
-  title: 'FAQs — Gutter Cleaning, Roof Washing & More',
+  title: 'Gutter Cleaning FAQs — Northern California | Top Down Gutter & Windows',
   description:
-    'Answers to common questions about gutter cleaning, roof washing, window cleaning, pricing, service areas, veteran discounts and more from Top Down Gutter & Windows in Chico, CA.',
+    'Answers to the most common questions about gutter cleaning, roof washing, window cleaning & exterior services in Chico, Redding, Oroville, Yuba City and Northern California.',
+  keywords: [
+    'gutter cleaning faq',
+    'how often clean gutters northern california',
+    'soft washing safe roof',
+    'free gutter inspection chico',
+    'gutter cleaning cost california',
+  ],
   alternates: { canonical: 'https://tdgutterandwindows.com/faqs' },
   openGraph: {
+    type: 'website',
     url: 'https://tdgutterandwindows.com/faqs',
-    title: 'FAQs — Gutter Cleaning, Roof Washing & More | Top Down Gutter & Windows',
+    title: 'Gutter Cleaning FAQs — Northern California | Top Down Gutter & Windows',
+    description: 'Answers to the most common questions about gutter cleaning, roof washing, window cleaning & exterior services in Chico, Redding, Oroville, Yuba City and Northern California.',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Top Down Gutter & Windows FAQ — Northern California' }],
+    siteName: 'Top Down Gutter & Windows',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Gutter Cleaning FAQs — Northern California | Top Down Gutter & Windows',
     description: 'Common questions answered — gutter cleaning, roof washing, service areas, pricing, and veteran discounts.',
+    images: ['/opengraph-image'],
   },
 };
 

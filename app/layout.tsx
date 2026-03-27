@@ -49,7 +49,18 @@ export const metadata: Metadata = {
     'gutter repair Chico',
     'soft washing roof California',
     'exterior cleaning Northern California',
+    'gutter cleaning Oroville CA',
+    'gutter guard installation Chico',
+    'gutter cleaning Red Bluff CA',
+    'gutter cleaning Grass Valley CA',
+    'free gutter inspection Chico',
+    'licensed insured exterior cleaning California',
+    'gutter cleaning Paradise CA',
+    'gutter cleaning Orland CA',
+    'gutter cleaning Yuba City CA',
+    'roof soft wash Northern California',
   ],
+  category: 'Home Services',
   authors: [{ name: 'Top Down Gutter & Windows', url: BASE_URL }],
   creator: 'Top Down Gutter & Windows',
   publisher: 'Top Down Gutter & Windows',
@@ -61,6 +72,7 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
@@ -104,7 +116,7 @@ export const metadata: Metadata = {
   // verification: { google: 'YOUR_VERIFICATION_TOKEN' },
 };
 
-// ── Global JSON-LD: WebSite + Organization ──
+// ── Global JSON-LD: WebSite schema ──
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -139,6 +151,53 @@ const websiteSchema = {
   },
 };
 
+// ── Global JSON-LD: Standalone Organization schema ──
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Top Down Gutter & Windows',
+  alternateName: 'Top Down Gutter and Window Cleaning Services',
+  '@id': `${BASE_URL}/#organization`,
+  url: BASE_URL,
+  logo: { '@type': 'ImageObject', url: `${BASE_URL}/opengraph-image` },
+  image: `${BASE_URL}/opengraph-image`,
+  telephone: '+1-614-350-5978',
+  email: 'TopDown.GutterAndWindow@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '1180 E Lassen Ave',
+    addressLocality: 'Chico',
+    addressRegion: 'CA',
+    postalCode: '95928',
+    addressCountry: 'US',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Chico', containedInPlace: { '@type': 'State', name: 'California' } },
+    { '@type': 'City', name: 'Redding', containedInPlace: { '@type': 'State', name: 'California' } },
+    { '@type': 'City', name: 'Oroville', containedInPlace: { '@type': 'State', name: 'California' } },
+    { '@type': 'City', name: 'Yuba City', containedInPlace: { '@type': 'State', name: 'California' } },
+    { '@type': 'City', name: 'Red Bluff', containedInPlace: { '@type': 'State', name: 'California' } },
+    { '@type': 'City', name: 'Orland', containedInPlace: { '@type': 'State', name: 'California' } },
+    { '@type': 'City', name: 'Paradise', containedInPlace: { '@type': 'State', name: 'California' } },
+    { '@type': 'City', name: 'Grass Valley', containedInPlace: { '@type': 'State', name: 'California' } },
+  ],
+  knowsAbout: [
+    'Gutter Cleaning',
+    'Roof Soft-Washing',
+    'Window Cleaning',
+    'Solar Panel Cleaning',
+    'House Washing',
+    'Gutter Installation',
+    'Gutter Repair',
+    'Gutter Guard Installation',
+  ],
+  sameAs: [
+    'https://www.facebook.com/p/Top-Down-Gutter-and-Window-Cleaning-Services-61568901527821/',
+    'https://www.yelp.com/biz/top-down-gutter-and-windows-chico-4',
+    'https://sites.google.com/view/tdgutterandwindows/home',
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -153,10 +212,15 @@ export default function RootLayout({
         {/* Preconnect to Google Fonts origin for faster font load */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Global WebSite + Organization schema */}
+        {/* Global WebSite schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        {/* Global Organization schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
       <body className="bg-navy-900 text-white min-h-screen flex flex-col">

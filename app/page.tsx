@@ -102,6 +102,47 @@ export default function HomePage() {
               'https://www.yelp.com/biz/top-down-gutter-and-windows-chico-4',
               'https://sites.google.com/view/tdgutterandwindows/home',
             ],
+            speakable: {
+              '@type': 'SpeakableSpecification',
+              cssSelector: ['#hero-heading', '.cta-strip-number'],
+            },
+          }),
+        }}
+      />
+
+      {/* JSON-LD Homepage FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'What services does Top Down Gutter & Windows offer?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Top Down Gutter & Windows offers gutter cleaning, roof soft-washing, gutter repairs, gutter installation, gutter guard installation, solar panel cleaning, house washing, window cleaning, and free gutter inspections. All services are performed by trained crews and backed by a price match guarantee.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'What areas does Top Down Gutter & Windows serve?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Top Down Gutter & Windows serves Chico, Redding, Oroville, Yuba City, Red Bluff, Orland, Paradise, and Grass Valley, as well as surrounding communities in Shasta, Tehama, Glenn, Butte, Colusa, Sutter, Yuba, and Nevada counties in Northern California.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Is Top Down Gutter & Windows licensed and insured?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Yes. Top Down Gutter & Windows is fully licensed and carries general liability insurance on every job performed in California. This protects your property and gives you recourse in the unlikely event something goes wrong on site.',
+                },
+              },
+            ],
           }),
         }}
       />
@@ -232,7 +273,7 @@ export default function HomePage() {
           </p>
           <a
             href="tel:6143505978"
-            className="font-label text-navy-900 block animate-pulse-glow mb-6"
+            className="cta-strip-number font-label text-navy-900 block animate-pulse-glow mb-6"
             style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', letterSpacing: '0.05em' }}
             aria-label="Call us at (614) 350-5978"
           >

@@ -7,8 +7,29 @@ export const metadata: Metadata = {
   title: 'More Resources — Top Down Gutter & Windows',
   description:
     'Explore blog posts, FAQs, price matching, veteran discounts, service areas, and booking for Top Down Gutter & Windows — Northern California exterior cleaning experts.',
+  keywords: [
+    'top down gutter windows resources',
+    'gutter cleaning northern california resources',
+    'exterior cleaning faq chico',
+    'veteran discount gutter cleaning california',
+    'price match guarantee gutter cleaning',
+    'book gutter cleaning northern california',
+  ],
   alternates: { canonical: 'https://tdgutterandwindows.com/more' },
-  openGraph: { url: 'https://tdgutterandwindows.com/more' },
+  openGraph: {
+    type: 'website',
+    url: 'https://tdgutterandwindows.com/more',
+    title: 'More Resources — Top Down Gutter & Windows',
+    description: 'Explore blog posts, FAQs, price matching, veteran discounts, service areas, and booking for Top Down Gutter & Windows — Northern California exterior cleaning experts.',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Top Down Gutter & Windows — More Resources' }],
+    siteName: 'Top Down Gutter & Windows',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'More Resources — Top Down Gutter & Windows',
+    description: 'FAQs, blog, price matching, veteran discounts, and service booking for Northern California exterior cleaning.',
+    images: ['/opengraph-image'],
+  },
 };
 
 const links = [
@@ -81,8 +102,41 @@ const links = [
   },
 ];
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tdgutterandwindows.com' },
+    { '@type': 'ListItem', position: 2, name: 'More Services', item: 'https://tdgutterandwindows.com/more' },
+  ],
+};
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'More Resources — Top Down Gutter & Windows',
+  url: 'https://tdgutterandwindows.com/more',
+  description:
+    'Explore blog posts, FAQs, price matching, veteran discounts, service areas, and booking for Top Down Gutter & Windows — Northern California exterior cleaning experts.',
+  mainEntity: {
+    '@type': 'ItemList',
+    name: 'Top Down Gutter & Windows Resources',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Blog', url: 'https://tdgutterandwindows.com/blog' },
+      { '@type': 'ListItem', position: 2, name: 'FAQs', url: 'https://tdgutterandwindows.com/faqs' },
+      { '@type': 'ListItem', position: 3, name: 'Price-Match Guarantee', url: 'https://tdgutterandwindows.com/price-matching' },
+      { '@type': 'ListItem', position: 4, name: 'Veteran Discount', url: 'https://tdgutterandwindows.com/about#veterans-about-heading' },
+      { '@type': 'ListItem', position: 5, name: 'Service Area', url: 'https://tdgutterandwindows.com/about#area-heading' },
+      { '@type': 'ListItem', position: 6, name: 'Book a Service', url: 'https://tdgutterandwindows.com/service-request' },
+    ],
+  },
+};
+
 export default function MorePage() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
     <div className="bg-navy-900 min-h-screen pt-24 pb-20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {/* Header */}
@@ -149,5 +203,6 @@ export default function MorePage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

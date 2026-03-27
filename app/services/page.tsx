@@ -10,6 +10,13 @@ export const metadata: Metadata = {
   title: 'Exterior Cleaning Services in Northern California | Top Down Gutter & Windows',
   description:
     'Gutter cleaning, roof soft-washing, window cleaning, solar panel cleaning, house washing & more in Northern California. Serving Chico, Redding, Oroville, Yuba City & beyond. Licensed & insured. Free inspections.',
+  keywords: [
+    'gutter cleaning services northern california',
+    'roof washing chico redding',
+    'window cleaning oroville yuba city',
+    'solar panel cleaning california',
+    'exterior cleaning services chico ca',
+  ],
   alternates: {
     canonical: 'https://tdgutterandwindows.com/services',
   },
@@ -19,12 +26,74 @@ export const metadata: Metadata = {
     description:
       'Professional exterior cleaning services across Northern California — gutters, roofs, windows, solar panels, house washing & more. Free inspections.',
     siteName: 'Top Down Gutter & Windows',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Top Down Gutter & Windows — Exterior Cleaning Services in Northern California',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Exterior Cleaning Services in Northern California | Top Down Gutter & Windows',
+    description:
+      'Professional exterior cleaning services across Northern California — gutters, roofs, windows, solar panels, house washing & more. Free inspections.',
+    images: ['/opengraph-image'],
   },
 };
 
 export default function ServicesPage() {
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://tdgutterandwindows.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Services',
+        item: 'https://tdgutterandwindows.com/services',
+      },
+    ],
+  };
+
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Exterior Cleaning Services — Top Down Gutter & Windows',
+    description: 'Professional exterior cleaning services in Northern California',
+    url: 'https://tdgutterandwindows.com/services',
+    numberOfItems: services.length,
+    itemListElement: services.map((service, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: service.title,
+      url: `https://tdgutterandwindows.com/services/${service.id}`,
+      item: {
+        '@type': 'Service',
+        name: service.title,
+        description: service.description,
+        provider: {
+          '@type': 'LocalBusiness',
+          name: 'Top Down Gutter & Windows',
+        },
+      },
+    })),
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+
       {/* ── HERO ── */}
       <section className="relative bg-navy-950 hero-pattern py-24 px-4 overflow-hidden" aria-labelledby="services-hub-heading">
         <div
