@@ -13,8 +13,9 @@ const BASE = 'https://tdgutterandwindows.com';
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Site launch / last substantive content update per page
-const SITE_LAUNCH   = '2025-03-20';
-const CONTENT_AUDIT = '2025-03-20'; // bump this when you rewrite copy
+const SITE_LAUNCH      = '2025-03-20';
+const CONTENT_AUDIT    = '2025-03-20'; // bump this when you rewrite copy
+const LOCATION_REBUILD = '2026-03-28'; // location pages fully rebuilt with gutter SEO content
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -91,7 +92,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ── LOCATIONS HUB ────────────────────────────────────────────────────
     {
       url: `${BASE}/locations`,
-      lastModified: SITE_LAUNCH,
+      lastModified: LOCATION_REBUILD,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
@@ -107,9 +108,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ── INDIVIDUAL LOCATION PAGES ────────────────────────────────────────
     ...locations.map((loc) => ({
       url: `${BASE}/locations/${loc.slug}`,
-      lastModified: '2025-03-20',
+      lastModified: LOCATION_REBUILD,
       changeFrequency: 'monthly' as const,
-      priority: 0.8,
+      priority: 0.9,
     })),
 
     // ── BLOG POSTS — real publish dates, evergreen = changeFreq 'never' ──
