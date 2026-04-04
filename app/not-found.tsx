@@ -47,7 +47,7 @@ export default function NotFound() {
 
           <p className="font-body text-slate-dark text-sm mt-8">
             Need help?{' '}
-            <a href="tel:6143505978" className="text-gold hover:underline">
+            <a href="tel:+16143505978" className="text-gold hover:underline">
               Call (614) 350-5978
             </a>
           </p>

@@ -113,7 +113,7 @@ export default function ContactPage() {
                 <div>
                   <p className="font-body font-semibold text-white text-sm mb-1">Phone</p>
                   <a
-                    href="tel:6143505978"
+                    href="tel:+16143505978"
                     className="font-body text-gold text-xl font-semibold hover:underline"
                   >
                     (614) 350-5978

@@ -264,7 +264,7 @@ export default function AboutPage() {
             <p className="font-body text-slate text-sm">
               <strong className="text-white">Not sure if we serve your area?</strong>{' '}
               Call us at{' '}
-              <a href="tel:6143505978" className="text-gold hover:underline">(614) 350-5978</a>
+              <a href="tel:+16143505978" className="text-gold hover:underline">(614) 350-5978</a>
               {' '}and we&apos;ll let you know right away.
             </p>
           </div>

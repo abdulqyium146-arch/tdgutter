@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { serviceContent } from '@/lib/serviceContent';
 import { services } from '@/lib/services';
 import { locations } from '@/lib/locations';
+import { getCitiesForService, ALL_SERVICE_SLUGS } from '@/lib/gutter-seo-data';
 import FAQAccordion from '@/components/FAQAccordion';
 import SectionLabel from '@/components/SectionLabel';
 import GoldDivider from '@/components/GoldDivider';
@@ -161,26 +162,32 @@ export default async function ServicePage({ params }: Props) {
     '@id': `https://tdgutterandwindows.com/services/${slug}#webpage`,
     url: `https://tdgutterandwindows.com/services/${slug}`,
     name: content.pageTitle,
-    isPartOf: { '@id': 'https://tdgutterandwindows.com/#website' },
+    description: content.metaDescription,
+    isPartOf: { '@type': 'WebSite', '@id': 'https://tdgutterandwindows.com/#website', name: 'Top Down Gutter & Windows', url: 'https://tdgutterandwindows.com' },
     about: { '@id': 'https://tdgutterandwindows.com/#organization' },
     primaryImageOfPage: {
       '@type': 'ImageObject',
       url: 'https://tdgutterandwindows.com/opengraph-image',
     },
     datePublished: '2025-03-20',
-    dateModified: '2026-03-27',
+    dateModified: '2026-04-04',
     inLanguage: 'en-US',
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', '.service-intro', '#service-areas-heading'],
+      xpath: ["//h1", "//p[contains(@class,'service-intro')]"],
+    },
+    areaServed: {
+      '@type': 'State',
+      name: 'California',
+      containedInPlace: { '@type': 'Country', name: 'United States' },
+    },
     breadcrumb: {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tdgutterandwindows.com' },
         { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://tdgutterandwindows.com/services' },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: service.title,
-          item: `https://tdgutterandwindows.com/services/${slug}`,
-        },
+        { '@type': 'ListItem', position: 3, name: service.title, item: `https://tdgutterandwindows.com/services/${slug}` },
       ],
     },
   };
@@ -278,13 +285,16 @@ export default async function ServicePage({ params }: Props) {
               </svg>
             </Link>
             <a
-              href="tel:6143505978"
-              className="inline-flex items-center gap-2 border-2 border-gold text-gold font-body font-semibold px-8 py-3.5 rounded-full hover:bg-gold/10 transition-colors duration-200 text-base"
+              href="tel:+16143505978"
+              className="inline-flex flex-col items-center gap-0 border-2 border-gold text-gold font-body font-bold px-8 py-3 rounded-full hover:bg-gold/10 transition-colors duration-200 text-base leading-tight"
             >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              Call (614) 350-5978
+              <span className="flex items-center gap-2">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                Call Now — (614) 350-5978
+              </span>
+              <span className="text-gold/70 text-xs font-medium">Same-day slots available</span>
             </a>
           </div>
         </div>
@@ -440,28 +450,77 @@ export default async function ServicePage({ params }: Props) {
       {/* ── CTA STRIP ── */}
       <section className="py-16 px-4 bg-gold text-center" aria-labelledby="service-cta-heading">
         <div className="max-w-3xl mx-auto">
-          <p id="service-cta-heading" className="font-display italic font-bold text-navy-900 text-2xl md:text-3xl mb-4">
-            Ready to schedule your {service.title.toLowerCase()}?
+          <p className="font-label text-navy-900/70 text-sm tracking-widest uppercase mb-2">
+            Lines Open Mon–Sat 7am–7pm · Free Inspection Included
+          </p>
+          <p id="service-cta-heading" className="font-display italic font-bold text-navy-900 text-2xl md:text-3xl mb-2">
+            Book your {service.title.toLowerCase()} today — same-day slots available!
+          </p>
+          <p className="font-body text-navy-900/80 text-base mb-4">
+            Call before noon and we&apos;ll aim to be there today. Licensed, insured &amp; price-matched.
           </p>
           <a
-            href="tel:6143505978"
-            className="font-label text-navy-900 block mb-6"
+            href="tel:+16143505978"
+            className="font-label text-navy-900 block mb-2"
             style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', letterSpacing: '0.05em' }}
             aria-label="Call us at (614) 350-5978"
           >
             (614) 350-5978
           </a>
+          <p className="font-body text-navy-900/70 text-sm mb-6">
+            Tap to call · Veteran &amp; first responder discounts available
+          </p>
           <Link
             href="/service-request"
             className="inline-flex items-center gap-2 bg-navy-900 text-white font-body font-semibold px-8 py-3.5 rounded-full hover:bg-navy-800 transition-colors duration-200"
           >
-            Schedule Online
+            Schedule Online Instead
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </Link>
         </div>
       </section>
+
+      {/* ── SERVICE AREAS — city links to combo pages ─────────────────────────
+          Only rendered for the 5 gutter-specific slugs that have combo pages.
+          Pushes PageRank from high-authority service pages → all city combos.
+      ──────────────────────────────────────────────────────────────────────── */}
+      {ALL_SERVICE_SLUGS.includes(slug) && (
+        <section className="py-16 px-4 bg-navy-950 border-t border-navy-800" aria-labelledby="service-areas-heading">
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-8">
+              <SectionLabel className="mb-3">Service Areas</SectionLabel>
+              <h2
+                id="service-areas-heading"
+                className="font-display font-bold text-white text-2xl sm:text-3xl mb-3"
+              >
+                {service.title} Service Areas in Northern California
+              </h2>
+              <GoldDivider />
+              <p className="font-body text-slate text-base leading-relaxed mt-4 max-w-2xl">
+                We provide professional {service.title.toLowerCase()} across Northern California.
+                Select your city for local pricing, availability, and service details specific to your area.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
+              {getCitiesForService(slug).map((city) => (
+                <Link
+                  key={city.slug}
+                  href={city.href}
+                  className={`font-body text-sm px-3 py-2 rounded-lg border transition-colors duration-150 hover:text-gold hover:border-gold/40 ${
+                    city.tier === 'primary'
+                      ? 'text-slate border-navy-700 bg-navy-800'
+                      : 'text-navy-500 border-navy-800 bg-navy-900'
+                  }`}
+                >
+                  {service.title} in {city.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 }

@@ -194,10 +194,10 @@ export default function MorePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:6143505978"
+              href="tel:+16143505978"
               className="bg-gold text-navy-900 font-body font-semibold px-8 py-4 rounded-full hover:bg-gold-light transition-colors duration-200"
             >
-              Call (614) 350-5978
+              Call Now — (614) 350-5978
             </a>
             <Link
               href="/service-request"

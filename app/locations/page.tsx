@@ -194,10 +194,10 @@ export default function LocationsPage() {
               </svg>
             </Link>
             <a
-              href="tel:6143505978"
+              href="tel:+16143505978"
               className="inline-flex items-center gap-2 border-2 border-gold text-gold font-body font-semibold px-7 py-3 rounded-full hover:bg-gold/10 transition-colors duration-200"
             >
-              Call (614) 350-5978
+              Call Now — (614) 350-5978
             </a>
           </div>
         </div>

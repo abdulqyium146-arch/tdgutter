@@ -288,13 +288,16 @@ export default function HomePage() {
               </svg>
             </Link>
             <a
-              href="tel:6143505978"
-              className="inline-flex items-center gap-2 border-2 border-gold text-gold font-body font-semibold px-8 py-3.5 rounded-full hover:bg-gold/10 transition-colors duration-200 text-base"
+              href="tel:+16143505978"
+              className="inline-flex flex-col items-center gap-0 border-2 border-gold text-gold font-body font-bold px-8 py-3 rounded-full hover:bg-gold/10 transition-colors duration-200 text-base leading-tight"
             >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              Call (614) 350-5978
+              <span className="flex items-center gap-2">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                Call Now — (614) 350-5978
+              </span>
+              <span className="text-gold/70 text-xs font-medium">Free quote · Same-day available</span>
             </a>
           </div>
         </div>
@@ -360,25 +363,34 @@ export default function HomePage() {
         aria-labelledby="cta-heading"
       >
         <div className="max-w-3xl mx-auto">
+          <p className="font-label text-navy-900/70 text-sm tracking-widest uppercase mb-2">
+            Lines Open Mon–Sat 7am–7pm · Free Inspection on Every Job
+          </p>
           <p
             id="cta-heading"
-            className="font-display italic font-bold text-navy-900 text-2xl md:text-3xl mb-4"
+            className="font-display italic font-bold text-navy-900 text-2xl md:text-3xl mb-2"
           >
-            Call now and schedule an estimate today!
+            Don&apos;t wait — clogged gutters cause real damage. Call now!
+          </p>
+          <p className="font-body text-navy-900/80 text-base mb-4">
+            Same-day slots available when you call before noon. Licensed, insured, and price-matched.
           </p>
           <a
-            href="tel:6143505978"
-            className="cta-strip-number font-label text-navy-900 block animate-pulse-glow mb-6"
+            href="tel:+16143505978"
+            className="cta-strip-number font-label text-navy-900 block animate-pulse-glow mb-2"
             style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', letterSpacing: '0.05em' }}
             aria-label="Call us at (614) 350-5978"
           >
             (614) 350-5978
           </a>
+          <p className="font-body text-navy-900/70 text-sm mb-6">
+            Tap to call · Veteran &amp; first responder discounts available
+          </p>
           <Link
             href="/service-request"
             className="inline-flex items-center gap-2 bg-navy-900 text-white font-body font-semibold px-8 py-3.5 rounded-full hover:bg-navy-800 transition-colors duration-200"
           >
-            Schedule Online
+            Schedule Online Instead
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>

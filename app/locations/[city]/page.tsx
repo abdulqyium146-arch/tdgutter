@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { locations } from '@/lib/locations';
 import { services } from '@/lib/services';
+import { getServicesForCity } from '@/lib/gutter-seo-data';
 import FAQAccordion from '@/components/FAQAccordion';
 import SectionLabel from '@/components/SectionLabel';
 import GoldDivider from '@/components/GoldDivider';
@@ -71,26 +72,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // ─── REUSABLE INLINE CTA ───────────────────────────────────────────────────────
 function InlineCTA({ city }: { city: string }) {
   return (
-    <div className="my-12 bg-navy-900 border border-gold/20 rounded-2xl p-8 text-center">
-      <p className="font-display font-bold text-white text-xl mb-2">
-        Need gutter service in {city}?
+    <div className="my-12 bg-gold rounded-2xl p-8 text-center">
+      <p className="font-display font-bold text-navy-950 text-2xl mb-1">
+        Serving {city} — Call Before Noon for a Same-Day Slot
       </p>
-      <p className="font-body text-slate text-sm mb-6">
-        Same-day availability — call before noon and we&rsquo;ll aim for today.
+      <p className="font-body text-navy-900/80 text-sm mb-5">
+        Lines open Mon–Sat 7am–7pm &middot; Free inspection included &middot; Licensed &amp; insured
       </p>
       <div className="flex flex-col sm:flex-row gap-3 justify-center">
         <a
-          href="tel:6143505978"
-          className="inline-flex items-center justify-center gap-2 bg-gold text-navy-900 font-body font-semibold px-7 py-3 rounded-full hover:bg-gold-light transition-colors duration-200 text-sm"
+          href="tel:+16143505978"
+          className="inline-flex items-center justify-center gap-2 bg-navy-950 text-white font-body font-bold px-7 py-3.5 rounded-full hover:bg-navy-800 transition-colors duration-200 text-base"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
           </svg>
-          Call (614) 350-5978
+          Call Now — (614) 350-5978
         </a>
         <Link
           href="/service-request"
-          className="inline-flex items-center justify-center gap-2 border-2 border-gold text-gold font-body font-semibold px-7 py-3 rounded-full hover:bg-gold/10 transition-colors duration-200 text-sm"
+          className="inline-flex items-center justify-center gap-2 border-2 border-navy-950 text-navy-950 font-body font-semibold px-7 py-3.5 rounded-full hover:bg-navy-950/10 transition-colors duration-200 text-base"
         >
           Get a Free Estimate
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -395,16 +396,22 @@ export default async function LocationPage({ params }: Props) {
     '@id': `https://tdgutterandwindows.com/locations/${location.slug}#webpage`,
     url: `https://tdgutterandwindows.com/locations/${location.slug}`,
     name: location.pageTitle,
-    isPartOf: { '@id': 'https://tdgutterandwindows.com/#website' },
+    description: location.metaDescription,
+    isPartOf: { '@type': 'WebSite', '@id': 'https://tdgutterandwindows.com/#website', name: 'Top Down Gutter & Windows', url: 'https://tdgutterandwindows.com' },
     about: { '@id': 'https://tdgutterandwindows.com/#organization' },
     primaryImageOfPage: {
       '@type': 'ImageObject',
       url: 'https://tdgutterandwindows.com/opengraph-image',
     },
     datePublished: '2025-03-20',
-    dateModified: '2026-03-28',
+    dateModified: '2026-04-04',
     inLanguage: 'en-US',
-    keywords: `gutter cleaning ${location.city.toLowerCase()} ca, gutter repair ${location.city.toLowerCase()}, gutter installation ${location.city.toLowerCase()}, gutter cleaning near me`,
+    keywords: `gutter cleaning ${location.city.toLowerCase()} ca, gutter repair ${location.city.toLowerCase()}, gutter installation ${location.city.toLowerCase()}, gutter guard ${location.city.toLowerCase()}, gutter cleaning near me ${location.city.toLowerCase()}`,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', '.location-intro', '#city-gutter-services-heading'],
+      xpath: ["//h1", "//p[contains(@class,'location-intro')]"],
+    },
   };
 
   const placeSchema = {
@@ -501,13 +508,13 @@ export default async function LocationPage({ params }: Props) {
               </svg>
             </Link>
             <a
-              href="tel:6143505978"
+              href="tel:+16143505978"
               className="inline-flex items-center gap-2 border-2 border-gold text-gold font-body font-semibold px-8 py-3.5 rounded-full hover:bg-gold/10 transition-colors duration-200 text-base"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              Call (614) 350-5978
+              Call Now — (614) 350-5978
             </a>
           </div>
         </div>
@@ -1145,8 +1152,8 @@ export default async function LocationPage({ params }: Props) {
           <FAQAccordion faqs={faqs} />
           <p className="mt-8 font-body text-slate text-sm">
             Have a question not answered here?{' '}
-            <a href="tel:6143505978" className="text-gold hover:text-gold-light transition-colors duration-200 font-semibold">
-              Call (614) 350-5978
+            <a href="tel:+16143505978" className="text-gold hover:text-gold-light transition-colors duration-200 font-semibold">
+              Call Now — (614) 350-5978
             </a>{' '}
             or{' '}
             <Link href="/contact" className="text-gold hover:text-gold-light transition-colors duration-200 font-semibold">
@@ -1168,17 +1175,21 @@ export default async function LocationPage({ params }: Props) {
           >
             Serving {location.city} and all of {location.county}
           </p>
-          <p className="font-body text-navy-800 text-sm mb-6">
-            Same-day availability &mdash; limited slots &mdash; book now before the season fills up.
+          <p className="font-body text-navy-800 text-sm mb-2">
+            Call before noon — same-day slots available. Licensed &amp; insured. Price-match guaranteed.
+          </p>
+          <p className="font-label text-navy-900/70 text-xs tracking-wide mb-4">
+            Lines open Mon–Sat 7am–7pm &nbsp;•&nbsp; Veteran &amp; first responder discounts
           </p>
           <a
-            href="tel:6143505978"
-            className="font-label text-navy-900 block mb-6"
+            href="tel:+16143505978"
+            className="font-label text-navy-900 block mb-2"
             style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', letterSpacing: '0.05em' }}
             aria-label="Call Top Down Gutter & Windows at (614) 350-5978"
           >
             (614) 350-5978
           </a>
+          <p className="font-body text-navy-900/70 text-sm mb-6">Tap to call instantly</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/service-request"
@@ -1195,6 +1206,52 @@ export default async function LocationPage({ params }: Props) {
             >
               Book a Free Inspection
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          GUTTER SERVICES IN THIS CITY — links to /locations/[city]/[service]
+          5 crawlable links per city → passes PageRank to all combo pages
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="py-16 px-4 bg-navy-950 border-t border-navy-800" aria-labelledby="city-gutter-services-heading">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-8">
+            <SectionLabel className="mb-3">Gutter Services</SectionLabel>
+            <h2
+              id="city-gutter-services-heading"
+              className="font-display font-bold text-white text-2xl sm:text-3xl mb-3"
+            >
+              Gutter Services in {location.city}, CA
+            </h2>
+            <GoldDivider />
+            <p className="font-body text-slate text-base leading-relaxed mt-4 max-w-2xl">
+              Top Down Gutter &amp; Windows offers the full range of gutter services throughout{' '}
+              {location.city} and {location.county}. Select a service below for local pricing,
+              process details, and availability.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {getServicesForCity(location.slug).map((service) => (
+              <Link
+                key={service.slug}
+                href={service.href}
+                className="group bg-navy-800 border border-navy-700 rounded-xl p-5 hover:border-gold/40 hover:shadow-md hover:shadow-navy-950/60 transition-all duration-300 flex flex-col"
+              >
+                <h3 className="font-display font-bold text-white text-base mb-2 group-hover:text-gold transition-colors duration-200">
+                  {service.name}
+                </h3>
+                <p className="font-body text-slate text-sm leading-relaxed flex-1 mb-3">
+                  {service.description}
+                </p>
+                <span className="inline-flex items-center gap-1 text-gold text-xs font-body font-medium group-hover:gap-2 transition-all duration-200 mt-auto">
+                  Learn More
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

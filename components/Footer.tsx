@@ -40,6 +40,25 @@ export default function Footer() {
       style={{ borderTop: '2px solid #C9902A' }}
       role="contentinfo"
     >
+      {/* Urgent Call Banner */}
+      <div className="bg-gold py-5 px-4 text-center">
+        <p className="font-display font-bold text-navy-900 text-lg mb-1">
+          Ready to Book? Call Now — Lines Open Mon–Sat 7am–7pm
+        </p>
+        <a
+          href="tel:+16143505978"
+          className="inline-flex items-center gap-2 font-label text-navy-950 hover:text-navy-800 transition-colors duration-200"
+          style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', letterSpacing: '0.05em' }}
+          aria-label="Call (614) 350-5978"
+        >
+          <svg className="w-6 h-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          (614) 350-5978
+        </a>
+        <p className="font-body text-navy-900/70 text-sm mt-1">Free inspection · Same-day slots available · Veteran &amp; first responder discounts</p>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Column 1 — Brand */}
@@ -123,7 +142,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="tel:6143505978"
+                  href="tel:+16143505978"
                   className="flex items-center gap-2 font-body text-slate text-sm hover:text-gold transition-colors duration-200"
                 >
                   <svg className="w-4 h-4 text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
