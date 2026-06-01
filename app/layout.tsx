@@ -112,8 +112,8 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
   },
 
-  // ── Google Search Console verification (add your token here) ──
-  // verification: { google: 'YOUR_VERIFICATION_TOKEN' },
+  // ── Google Search Console verification ──
+  verification: { google: 'Tz8BP4rQB6CL5K4OKgyv_DYFcEG9F-lRSIa4_5Ic0A4' },
 };
 
 // ── Global JSON-LD: Combined @graph (WebSite + Organization) ──

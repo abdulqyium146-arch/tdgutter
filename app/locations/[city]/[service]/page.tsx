@@ -8,6 +8,7 @@ import {
   getLocation,
   getService,
 } from '@/lib/locationData'
+import { getLocationMeta } from '@/lib/locationMeta'
 import TrustBar from '@/components/gutters/TrustBar'
 import CTABanner from '@/components/gutters/CTABanner'
 import FAQAccordion from '@/components/gutters/FAQAccordion'
@@ -57,11 +58,13 @@ export default async function LocationServicePage({ params }: Props) {
   if (!location || !svc) notFound()
 
   const otherServices = SERVICES.filter((s) => s.slug !== service)
+  const meta = getLocationMeta(city)
 
-  // ── Body copy: 400+ words across 3 paragraphs ──────────────────────────────
-  const para1 = buildPara1(svc.name, svc.slug, location.name)
-  const para2 = buildPara2(location, svc.name)
+  // ── Body copy: 400+ words across 3 paragraphs + crew note ─────────────────
+  const para1 = buildPara1(svc.slug, location.name, city)
+  const para2 = buildPara2(location, svc.name, meta)
   const para3 = buildPara3(svc, location.name)
+  const crewNote = buildCrewNote(svc.slug, location, meta)
 
   return (
     <>
@@ -134,6 +137,21 @@ export default async function LocationServicePage({ params }: Props) {
           <div className="space-y-5 font-body text-slate text-base leading-relaxed">
             <p>{para1}</p>
             <p>{para2}</p>
+          </div>
+
+          {/* Crew Note callout */}
+          {crewNote && (
+            <div className="my-6 border-l-4 border-gold bg-navy-800 rounded-r-xl px-5 py-4">
+              <p className="font-label text-gold text-xs tracking-[0.15em] uppercase mb-2">
+                Local Crew Note — {location.name}
+              </p>
+              <p className="font-body text-slate text-sm leading-relaxed italic">
+                &ldquo;{crewNote}&rdquo;
+              </p>
+            </div>
+          )}
+
+          <div className="font-body text-slate text-base leading-relaxed">
             <p>{para3}</p>
           </div>
         </div>
