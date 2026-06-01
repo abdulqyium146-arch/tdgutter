@@ -8,7 +8,7 @@ import {
   getLocation,
   getService,
 } from '@/lib/locationData'
-import { getLocationMeta } from '@/lib/locationMeta'
+import { getLocationMeta, type LocationMeta } from '@/lib/locationMeta'
 import TrustBar from '@/components/gutters/TrustBar'
 import CTABanner from '@/components/gutters/CTABanner'
 import FAQAccordion from '@/components/gutters/FAQAccordion'
@@ -61,7 +61,7 @@ export default async function LocationServicePage({ params }: Props) {
   const meta = getLocationMeta(city)
 
   // ── Body copy: 400+ words across 3 paragraphs + crew note ─────────────────
-  const para1 = buildPara1(svc.slug, location.name, city)
+  const para1 = buildPara1(svc.name, svc.slug, location.name)
   const para2 = buildPara2(location, svc.name, meta)
   const para3 = buildPara3(svc, location.name)
   const crewNote = buildCrewNote(svc.slug, location, meta)
@@ -300,13 +300,35 @@ function buildPara1(serviceName: string, serviceSlug: string, cityName: string):
   }
 }
 
-function buildPara2(location: ReturnType<typeof getLocation>, serviceName: string): string {
+function buildPara2(location: ReturnType<typeof getLocation>, serviceName: string, meta?: LocationMeta): string {
   if (!location) return ''
-  return `Homeowners in ${location.name}, ${location.county} face a specific set of conditions that make professional ${serviceName.toLowerCase()} more important here than in many California communities. ${location.gutterPainPoint} Add to that the seasonal rainfall patterns typical of ${location.county} — where the first significant storms of the year often arrive quickly and heavily, with little warning — and the case for staying ahead of gutter maintenance becomes clear. Gutter systems that were clear in September can be completely blocked by November in this environment, and a blocked gutter in the first heavy rain is a guaranteed overflow event. At Top Down Gutter & Windows, we have worked extensively throughout ${location.county} and understand exactly what ${location.name}'s rooftops and tree canopy throw at a gutter system each year. That local knowledge shapes every decision we make on the job — from where to start the inspection to which downspouts are likely to be the first to fail.`
+  const landmarkSentence = meta
+    ? ` Neighborhoods near ${meta.landmarks[0]} and ${meta.landmarks[1]} are among those we service most regularly — local conditions in these areas are exactly what our crews are trained to handle.`
+    : ''
+  return `Homeowners in ${location.name}, ${location.county} face a specific set of conditions that make professional ${serviceName.toLowerCase()} more important here than in many California communities. ${location.gutterPainPoint} Add to that the seasonal rainfall patterns typical of ${location.county} — where the first significant storms of the year often arrive quickly and heavily, with little warning — and the case for staying ahead of gutter maintenance becomes clear. Gutter systems that were clear in September can be completely blocked by November in this environment, and a blocked gutter in the first heavy rain is a guaranteed overflow event.${landmarkSentence} At Top Down Gutter & Windows, we have worked extensively throughout ${location.county} and understand exactly what ${location.name}'s rooftops and tree canopy throw at a gutter system each year. That local knowledge shapes every decision we make on the job — from where to start the inspection to which downspouts are likely to be the first to fail.`
 }
 
 function buildPara3(svc: ReturnType<typeof getService>, cityName: string): string {
   if (!svc) return ''
   const steps = svc.process
   return `When Top Down Gutter & Windows performs ${svc.name.toLowerCase()} in ${cityName}, the process follows a consistent three-step approach designed to produce verifiable results rather than just a visual pass. ${steps[0]} ${steps[1]} ${steps[2]} Every job ends with the same question we ask ourselves: would we be comfortable if the homeowner tested the system in a heavy rain tonight? If the answer is not an unambiguous yes, the job is not finished. That standard — held to on every property in ${cityName} and across Northern California — is what separates a professional gutter company from a pressure washing crew with a ladder.`
+}
+
+function buildCrewNote(serviceSlug: string, location: ReturnType<typeof getLocation>, meta?: LocationMeta): string {
+  if (!location || !meta) return ''
+  const [landmark1, landmark2] = meta.landmarks
+  switch (serviceSlug) {
+    case 'gutter-cleaning':
+      return `We run a lot of gutter cleanings in ${location.name} — especially around ${landmark1}. The leaf load here is heavier than most homeowners expect. We recommend cleaning in ${meta.seasonalTiming}, before the first heavy rains hit.`
+    case 'gutter-repair':
+      return `In the ${landmark2} area, we frequently find hangers that have pulled from aging fascia boards. The combination of winter rain weight and summer heat cycles puts real stress on the hardware. Catching it early saves the fascia.`
+    case 'gutter-installation':
+      return `Homes near ${landmark1} in ${location.name} often have original four-inch gutters undersized for the actual roof drainage load. When we replace those with properly sized five- or six-inch gutters, homeowners notice the difference in the first storm of the season.`
+    case 'gutter-guard':
+      return `After installing micro-mesh guards on homes around ${landmark2}, we hear consistently that homeowners are relieved to stop climbing ladders every fall. The best time to install here is ${meta.seasonalTiming} — before the heaviest debris season.`
+    case 'gutter-inspection':
+      return `We inspect a lot of properties in ${location.name}, including the ${landmark1} corridor where tree canopy can hide gutter damage that is not visible from the ground. Our ladder inspections catch issues months before they show up as interior water damage.`
+    default:
+      return ''
+  }
 }
