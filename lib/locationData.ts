@@ -526,7 +526,7 @@ export const LOCATIONS: Location[] = [
     county: 'Yuba County',
     state: 'CA',
     gutterPainPoint:
-      'Olivehurst\'s Yuba River floodplain position means seasonal high-water events deposit organic river debris on properties, and the neighboring orchard communities\' leaf fall blows into Olivehurst gutters throughout fall — an unusual combination of river-origin and orchard-origin debris that arrives in the same gutter channel.',
+      'Olivehurst sits on the Yuba River floodplain, where seasonal high-water events deposit organic river silt and reed debris directly onto properties — and neighboring orchard communities add a second wave of heavy leaf fall throughout October and November. This double-source debris load fills gutters faster than nearly anywhere else in Yuba County, making professional gutter cleaning critical before the rainy season and gutter guards a particularly high-value investment for homes anywhere near Olivehurst Avenue or the Plumas Lake Road corridor.',
     nearbyCities: ['marysville', 'yuba-city', 'plumas-lake', 'rackerby'],
     priority: 'tertiary',
   },

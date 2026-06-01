@@ -6,6 +6,7 @@
 export type LocationMeta = {
   landmarks: [string, string]
   seasonalTiming: string
+  localFaqs?: Array<{ q: string; a: string }>
 }
 
 export const LOCATION_META: Record<string, LocationMeta> = {
@@ -213,6 +214,20 @@ export const LOCATION_META: Record<string, LocationMeta> = {
   'olivehurst': {
     landmarks: ['Olivehurst Avenue corridor', 'Plumas Lake Road neighborhood'],
     seasonalTiming: 'October through December',
+    localFaqs: [
+      {
+        q: 'Do you offer gutter guard installation in Olivehurst?',
+        a: 'Yes — and gutter guards are one of the most cost-effective upgrades for Olivehurst homes specifically. The dual debris load here (Yuba River organic silt plus orchard leaf fall from neighboring communities) means unprotected gutters can clog in a matter of weeks during peak season. We install micro-mesh gutter guards that block fine debris and pine needles while maintaining full water flow capacity, dramatically reducing how often your gutters need service.',
+      },
+      {
+        q: 'Do you handle gutter repair in Olivehurst, CA?',
+        a: 'Yes. Olivehurst\'s floodplain position adds water-weight stress during high-water events, which accelerates hanger fatigue, seam separation, and fascia deterioration faster than in drier areas. We repair sagging sections, leaking seams, loose hangers, and separated downspout joints throughout Yuba County, and same-day appointments are often available.',
+      },
+      {
+        q: 'Can you install new gutters in Olivehurst?',
+        a: 'Yes. We fabricate and install seamless aluminum gutters on-site for Olivehurst properties. For homes near the Yuba River floodplain, we recommend 6-inch K-style gutters with downspout placement that directs water well away from the foundation — especially important in an area with elevated groundwater during storm season. Every installation is pitched and tested before we leave.',
+      },
+    ],
   },
   'plumas-lake': {
     landmarks: ['Plumas Lake Boulevard planned community', 'Feather River watershed corridor'],

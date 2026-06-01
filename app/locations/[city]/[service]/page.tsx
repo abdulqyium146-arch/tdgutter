@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!location || !svc) return { title: 'Not Found', robots: { index: false } }
 
   const title = `${svc.name} in ${location.name}, CA | Top Down Gutter & Windows`
-  const description = `Top Down Gutter & Windows offers professional ${svc.name.toLowerCase()} in ${location.name}, CA (${location.county}). Licensed, insured, free inspection. Call (614) 350-5978.`
+  const description = `Professional ${svc.name.toLowerCase()} in ${location.name}, CA — ${location.county}. Top Down Gutter & Windows also provides gutter repair, gutter guard installation & full gutter installation throughout ${location.county}. Licensed & insured. Free inspection. Call (614) 350-5978.`
   const url = `https://tdgutterandwindows.com/locations/${city}/${service}`
 
   return {
@@ -118,6 +118,15 @@ export default async function LocationServicePage({ params }: Props) {
               </svg>
             </Link>
           </div>
+          {meta?.seasonalTiming && (
+            <p className="font-body text-gold/75 text-sm mt-5">
+              <svg className="w-3.5 h-3.5 inline-block mr-1.5 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span className="font-semibold text-gold">Best time to schedule in {location.name}:</span>{' '}
+              {meta.seasonalTiming}
+            </p>
+          )}
         </div>
       </section>
 
@@ -194,7 +203,7 @@ export default async function LocationServicePage({ params }: Props) {
           >
             {svc.name} Questions — Answered
           </h2>
-          <FAQAccordion faqs={svc.faqs} serviceName={svc.name} />
+          <FAQAccordion faqs={[...svc.faqs, ...(meta?.localFaqs ?? [])]} serviceName={svc.name} />
         </div>
       </section>
 
@@ -206,27 +215,43 @@ export default async function LocationServicePage({ params }: Props) {
         variant="service"
       />
 
-      {/* ── 7. OTHER SERVICES IN THIS CITY ── */}
-      <section className="py-12 px-4 bg-navy-950 border-t border-navy-800">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="font-display font-bold text-white text-xl mb-6">
-            Other gutter services in {location.name}:
+      {/* ── 7. COMPLETE GUTTER SERVICES IN CITY ── */}
+      <section className="py-16 px-4 bg-navy-950 border-t border-navy-800" aria-labelledby="all-services-heading">
+        <div className="max-w-4xl mx-auto">
+          <h2
+            id="all-services-heading"
+            className="font-display font-bold text-white text-2xl sm:text-3xl mb-3 text-center"
+          >
+            Complete Gutter Services in {location.name}, CA
           </h2>
-          <ul className="flex flex-wrap gap-3" role="list">
-            {otherServices.map((s) => (
-              <li key={s.slug}>
+          <p className="font-body text-slate text-center mb-8 max-w-2xl mx-auto text-sm">
+            Top Down Gutter &amp; Windows handles every gutter need for {location.county} homeowners — from same-day cleaning to full installation and guard systems.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {SERVICES.map((s) => {
+              const isCurrent = s.slug === service
+              return (
                 <Link
+                  key={s.slug}
                   href={`/locations/${city}/${s.slug}`}
-                  className="inline-flex items-center gap-2 bg-navy-800 border border-navy-700 rounded-full px-4 py-2 font-body text-slate text-sm hover:border-gold/50 hover:text-gold transition-colors duration-200"
+                  aria-current={isCurrent ? 'page' : undefined}
+                  className={`block rounded-2xl p-5 border transition-colors duration-200 ${
+                    isCurrent
+                      ? 'bg-gold/10 border-gold/40 pointer-events-none'
+                      : 'bg-navy-800 border-navy-700 hover:border-gold/50 hover:bg-navy-700'
+                  }`}
                 >
-                  <svg className="w-3.5 h-3.5 text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                  {s.name} in {location.name}
+                  <h3 className={`font-display font-bold text-base mb-1.5 flex items-center gap-2 ${isCurrent ? 'text-gold' : 'text-white'}`}>
+                    {s.name} in {location.name}
+                    {isCurrent && (
+                      <span className="text-gold/60 text-xs font-label uppercase tracking-wider">Current page</span>
+                    )}
+                  </h3>
+                  <p className="font-body text-slate text-sm leading-relaxed">{s.painSentence}</p>
                 </Link>
-              </li>
-            ))}
-          </ul>
+              )
+            })}
+          </div>
         </div>
       </section>
 
